@@ -1,0 +1,2 @@
+# my-infographic-collection
+Stocism
