@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Philosophy: East & West (Neo-Classic)</title>
+    <title>Philosophy: East & West</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
@@ -20,16 +20,16 @@
             theme: {
                 extend: {
                     colors: {
-                        paper: '#f0ece2',       /* Màu giấy mỹ thuật */
-                        ink: '#1a1918',         /* Màu mực in đậm */
-                        charcoal: '#363636',    /* Màu than chì */
-                        gold: '#a4895c',        /* Vàng đồng cổ */
-                        maroon: '#742a2a',      /* Đỏ đô (Đông) */
-                        navy: '#1e3a5f',        /* Xanh navy cổ (Tây) */
+                        paper: '#f0ece2',
+                        ink: '#1a1918',
+                        charcoal: '#363636',
+                        gold: '#a4895c',
+                        maroon: '#742a2a',
+                        navy: '#1e3a5f',
                     },
                     fontFamily: {
-                        display: ['"Cormorant Garamond"', 'serif'], 
-                        body: ['"Proza Libre"', 'sans-serif'],      
+                        display: ['"Cormorant Garamond"', 'serif'],
+                        body: ['"Proza Libre"', 'sans-serif'],
                     },
                     backgroundImage: {
                         'texture': "url('https://www.transparenttextures.com/patterns/cream-paper.png')",
@@ -47,7 +47,6 @@
             scroll-behavior: smooth;
         }
 
-        /* 3D Card Effect */
         .card-classic {
             background: #f7f5ef;
             border: 1px solid rgba(164, 137, 92, 0.2);
@@ -81,7 +80,6 @@
 
         .card-classic:hover::before { transform: scaleX(1); }
 
-        /* Drop Cap */
         .drop-cap {
             float: left;
             font-family: 'Cormorant Garamond', serif;
@@ -93,7 +91,6 @@
             padding-top: 0.2rem;
         }
 
-        /* Ornament Line */
         .ornament-line {
             display: flex;
             align-items: center;
@@ -106,7 +103,6 @@
             content: ''; height: 1px; width: 50px; background-color: #a4895c;
         }
 
-        /* Parallax Background Text */
         .bg-text {
             position: absolute;
             font-family: 'Cormorant Garamond', serif;
@@ -117,51 +113,18 @@
             z-index: 0;
             white-space: nowrap;
         }
-        
-        /* Nav Link Hover */
-        .nav-link {
-            position: relative;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -2px; left: 0; width: 0; height: 1px;
-            background: #a4895c;
-            transition: width 0.3s;
-        }
-        .nav-link:hover::after { width: 100%; }
     </style>
 </head>
 <body class="antialiased">
-
-    <!-- NAVIGATION BAR (New Added) -->
-    <nav class="fixed top-0 w-full z-50 bg-paper/90 backdrop-blur-sm border-b border-gold/20 py-4">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <!-- Link: Trang Chủ (Đông Tây) -->
-            <a href="https://smolpouteitou.github.io/my-infographic-collection/philosophy_west_east.html" class="font-display font-bold text-xl text-ink tracking-widest hover:text-gold transition">
-                PHILOSOPHY<span class="text-gold">.</span>
-            </a>
-            
-            <div class="hidden md:flex gap-8 font-body text-sm text-charcoal uppercase tracking-widest font-semibold">
-                <a href="https://smolpouteitou.github.io/my-infographic-collection/philosophy_west_east.html" class="nav-link text-gold">Tổng Quan</a>
-                <!-- Link: Khắc Kỷ -->
-                <a href="https://smolpouteitou.github.io/my-infographic-collection/stoicism.html" class="nav-link hover:text-gold transition">Chủ Nghĩa Khắc Kỷ</a>
-            </div>
-
-            <!-- Mobile Menu Icon (Placeholder) -->
-            <div class="md:hidden text-ink cursor-pointer"><i class="fas fa-bars"></i></div>
-        </div>
-    </nav>
 
     <!-- Decorative Background Text -->
     <div class="bg-text top-20 -left-20 rotate-12">Wisdom</div>
     <div class="bg-text bottom-40 -right-20 -rotate-12">Truth</div>
 
     <!-- HERO SECTION -->
-    <header class="min-h-screen flex flex-col items-center justify-center relative z-10 px-6 pt-20">
-        <!-- Border Frame -->
-        <div class="absolute inset-4 border border-gold/30 pointer-events-none m-4 md:m-8 top-20"></div>
-        <div class="absolute inset-5 border border-gold/10 pointer-events-none m-4 md:m-8 top-20"></div>
+    <header class="min-h-screen flex flex-col items-center justify-center relative z-10 px-6">
+        <div class="absolute inset-4 border border-gold/30 pointer-events-none m-4 md:m-8"></div>
+        <div class="absolute inset-5 border border-gold/10 pointer-events-none m-4 md:m-8"></div>
 
         <div class="text-center max-w-4xl" data-aos="fade-up" data-aos-duration="1500">
             <div class="ornament-line text-gold">
@@ -170,11 +133,14 @@
             
             <p class="font-body text-sm tracking-[0.4em] uppercase text-charcoal mb-6">Đại Cương Triết Học</p>
             
-            <h1 class="text-7xl md:text-9xl font-display font-bold text-ink leading-none mb-4">
-                <span class="relative inline-block hover:text-navy transition duration-500 cursor-default">ĐÔNG</span>
-                <span class="text-gold text-5xl md:text-7xl font-light align-middle px-4">&</span>
-                <span class="relative inline-block hover:text-maroon transition duration-500 cursor-default">TÂY</span>
-            </h1>
+            <!-- LINK 1: TRANG CHỦ (ĐÔNG TÂY) -->
+            <a href="https://smolpouteitou.github.io/my-infographic-collection/philosophy_west_east.html" class="block hover:opacity-80 transition duration-300">
+                <h1 class="text-7xl md:text-9xl font-display font-bold text-ink leading-none mb-4">
+                    <span class="relative inline-block hover:text-navy transition duration-500 cursor-pointer">ĐÔNG</span>
+                    <span class="text-gold text-5xl md:text-7xl font-light align-middle px-4">&</span>
+                    <span class="relative inline-block hover:text-maroon transition duration-500 cursor-pointer">TÂY</span>
+                </h1>
+            </a>
 
             <p class="text-2xl md:text-3xl font-display text-charcoal italic mt-8 max-w-2xl mx-auto leading-relaxed">
                 "Cuộc đối thoại vĩnh cửu giữa <span class="text-navy font-semibold border-b border-navy/30">Logic</span> và <span class="text-maroon font-semibold border-b border-maroon/30">Trực Giác</span>"
@@ -264,10 +230,9 @@
                 <span class="text-gold font-bold tracking-widest text-xs uppercase">Chương II</span>
                 <h2 class="text-4xl font-display font-bold text-ink mt-2">Dòng Chảy Thời Gian</h2>
             </div>
-
             <div class="relative">
                 <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-gold/50"></div>
-                <!-- Timeline items... (giữ nguyên như bản trước) -->
+                <!-- Timeline Items -->
                 <div class="flex flex-col md:flex-row items-center justify-between mb-20 group" data-aos="fade-up">
                     <div class="md:w-5/12 text-right pr-8 md:order-1">
                         <h4 class="font-display text-2xl font-bold text-navy">Socrates • Plato</h4>
@@ -279,7 +244,19 @@
                         <p class="font-body text-sm text-gray-500 mt-2">Đạo đức & Tâm linh phương Đông</p>
                     </div>
                 </div>
-                <!-- More items... -->
+                <!-- Item 2 -->
+                <div class="flex flex-col md:flex-row items-center justify-between mb-20 group" data-aos="fade-up">
+                    <div class="md:w-5/12 text-right pr-8 md:order-1">
+                        <h4 class="font-display text-2xl font-bold text-navy">Thiên Chúa Giáo</h4>
+                        <p class="font-body text-sm text-gray-500 mt-2">Kỷ nguyên của Đức tin</p>
+                    </div>
+                    <div class="w-12 h-12 bg-paper border-2 border-gold rounded-full flex items-center justify-center font-display font-bold text-gold z-10 shadow-lg md:order-2 group-hover:bg-gold group-hover:text-white transition duration-300">II</div>
+                    <div class="md:w-5/12 text-left pl-8 md:order-3">
+                        <h4 class="font-display text-2xl font-bold text-maroon">Tam Giáo Đồng Nguyên</h4>
+                        <p class="font-body text-sm text-gray-500 mt-2">Sự giao thoa Nho - Phật - Lão</p>
+                    </div>
+                </div>
+                <!-- Item 3 -->
                 <div class="flex flex-col md:flex-row items-center justify-between group" data-aos="fade-up">
                     <div class="md:w-5/12 text-right pr-8 md:order-1">
                         <h4 class="font-display text-2xl font-bold text-navy">Hiện Sinh & Khoa Học</h4>
@@ -306,10 +283,10 @@
                 <span class="text-white not-italic border-b border-white/20 pb-1">Cái đầu lạnh của Phương Tây</span> và <span class="text-white not-italic border-b border-white/20 pb-1">Trái tim nóng của Phương Đông</span>."
             </p>
             
-            <!-- Link: Nút Bắt Đầu -->
+            <!-- LINK 2: NÚT BẮT ĐẦU (SANG TRANG KHẮC KỶ) -->
             <a href="https://smolpouteitou.github.io/my-infographic-collection/stoicism.html">
                 <button class="px-10 py-4 border border-gold text-gold font-bold tracking-[0.2em] uppercase hover:bg-gold hover:text-ink transition duration-500">
-                    Bắt đầu hành trình (Khắc Kỷ)
+                    Bắt đầu hành trình
                 </button>
             </a>
         </div>
