@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stoicism: Nghệ Thuật Của Sự Bình Thản</title>
+    <title>Chủ Nghĩa Khắc Kỷ: Light Academia</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -11,7 +11,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Manrope:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
     
     <!-- Icons & Animation -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -22,21 +22,14 @@
             theme: {
                 extend: {
                     colors: {
-                        dark: { bg: '#050505', surface: '#0a0a0a' },
-                        gold: { 
-                            DEFAULT: '#C5A059', 
-                            light: '#F3E5AB', 
-                            dark: '#8B6F3E',
-                            metallic: 'linear-gradient(135deg, #C5A059 0%, #F3E5AB 50%, #8B6F3E 100%)'
-                        },
+                        paper: '#F9F7F2',       /* Màu giấy kem */
+                        ink: '#1A1A1A',         /* Màu mực đen */
+                        bronze: '#8C7356',      /* Màu đồng cổ điển */
+                        gold: '#C5A059',
                     },
                     fontFamily: {
-                        display: ['"Cinzel"', 'serif'],
-                        serif: ['"Cormorant Garamond"', 'serif'],
-                        sans: ['"Manrope"', 'sans-serif'],
-                    },
-                    backgroundImage: {
-                        'marble': "url('https://www.transparenttextures.com/patterns/black-scales.png')",
+                        display: ['"Playfair Display"', 'serif'],
+                        body: ['"Lora"', 'serif'],
                     }
                 }
             }
@@ -44,335 +37,267 @@
     </script>
     
     <style>
-        body { background-color: #050505; color: #e5e5e5; font-family: 'Manrope', sans-serif; overflow-x: hidden; }
-        ::-webkit-scrollbar { width: 6px; background: #050505; }
-        ::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, #8B6F3E, #C5A059); border-radius: 3px; }
+        body { 
+            background-color: #F9F7F2; 
+            color: #1A1A1A; 
+            font-family: 'Lora', serif; 
+            overflow-x: hidden; 
+            background-image: url("https://www.transparenttextures.com/patterns/cream-paper.png");
+        }
+        
         html { scroll-behavior: smooth; }
 
-        /* Typography Effects */
-        .text-metallic {
-            background: linear-gradient(to bottom, #F3E5AB, #C5A059, #8B6F3E);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-size: 100% 200%; animation: shineText 5s ease infinite;
+        /* Card Style */
+        .classic-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+            border: 1px solid #E5E5E5;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
         }
-        @keyframes shineText { 0% { background-position: 0% 0%; } 50% { background-position: 0% 100%; } 100% { background-position: 0% 0%; } }
-
-        /* Interactive Pillars */
-        .pillar-card {
-            transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
-            filter: grayscale(100%) brightness(0.6);
-            flex: 1; position: relative; overflow: hidden;
-            min-height: 500px; /* Đảm bảo chiều cao tối thiểu cho ảnh */
-        }
-        .pillar-card:hover { flex: 3; filter: grayscale(0%) brightness(1); }
-        .pillar-content {
-            opacity: 0; transform: translateY(20px); transition: all 0.5s ease 0.2s;
-        }
-        .pillar-card:hover .pillar-content { opacity: 1; transform: translateY(0); }
-
-        /* Parallax Hero */
-        .hero-bg {
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
+        .classic-card:hover {
+            transform: translateY(-3px);
+            border-color: #8C7356;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
         }
 
-        /* Floating Dust Particles */
-        .particle {
-            position: absolute; width: 2px; height: 2px; background: #C5A059;
-            border-radius: 50%; animation: floatUp 10s linear infinite; opacity: 0;
+        .drop-cap::first-letter {
+            float: left; font-size: 3rem; line-height: 0.8; margin-right: 0.5rem;
+            font-family: 'Playfair Display', serif; font-weight: 700; color: #8C7356;
         }
-        @keyframes floatUp { 0% { transform: translateY(100vh) scale(0); opacity: 0; } 50% { opacity: 0.8; } 100% { transform: translateY(-10vh) scale(1.5); opacity: 0; } }
         
-        /* Fallback background nếu ảnh lỗi */
-        .img-fallback {
-            background: linear-gradient(to bottom, #1a1a1a, #000);
-        }
+        .divider { height: 1px; background: linear-gradient(to right, transparent, #8C7356, transparent); margin: 1.5rem auto; width: 30%; opacity: 0.6; }
     </style>
 </head>
-<body class="antialiased bg-marble">
-
-    <!-- Particle Background -->
-    <div id="particles" class="fixed inset-0 pointer-events-none z-0"></div>
+<body class="antialiased">
 
     <!-- Navbar -->
-    <nav class="fixed w-full z-50 top-0 py-6 px-8 flex justify-between items-center mix-blend-difference text-white transition-all duration-500 hover:bg-black/50 hover:backdrop-blur-md">
-        <a href="index.html" class="font-display font-bold text-2xl tracking-[0.2em] border-b border-transparent hover:border-white transition-all">
-            STOICISM
+    <nav class="fixed w-full z-50 top-0 py-3 px-6 flex justify-between items-center bg-[#F9F7F2]/95 backdrop-blur-md border-b border-[#E5E5E5] transition-all duration-300 shadow-sm">
+        <a href="index.html" class="font-display font-bold text-lg tracking-[0.1em] text-ink hover:text-bronze transition">
+            <i class="fas fa-columns mr-2 text-bronze"></i>STOICISM
         </a>
-        <div class="hidden md:flex gap-12 text-xs uppercase tracking-[0.3em] font-sans">
-            <a href="#mindset" class="hover:text-gold-light transition-colors relative group">Tư Duy<span class="absolute -bottom-2 left-0 w-0 h-px bg-gold-light transition-all group-hover:w-full"></span></a>
-            <a href="#control" class="hover:text-gold-light transition-colors relative group">Kiểm Soát<span class="absolute -bottom-2 left-0 w-0 h-px bg-gold-light transition-all group-hover:w-full"></span></a>
-            <a href="#toolbox" class="hover:text-gold-light transition-colors relative group">Công Cụ<span class="absolute -bottom-2 left-0 w-0 h-px bg-gold-light transition-all group-hover:w-full"></span></a>
+        <div class="hidden md:flex gap-6 text-xs font-bold uppercase tracking-widest text-gray-600">
+            <a href="#mindset" class="hover:text-bronze transition-colors">Tư Duy</a>
+            <a href="#control" class="hover:text-bronze transition-colors">Kiểm Soát</a>
+            <a href="#toolbox" class="hover:text-bronze transition-colors">Công Cụ</a>
         </div>
+        <a href="#mindset" class="border border-ink text-ink px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest hover:bg-ink hover:text-white transition-colors">Bắt đầu</a>
     </nav>
 
-    <!-- Hero Section: Cinematic -->
-    <header class="relative h-screen w-full overflow-hidden flex flex-col justify-center items-center bg-[#050505]">
-        <!-- Background Video/Image Replacement (School of Athens) -->
-        <div class="absolute inset-0 z-0 img-fallback">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Raphael_School_of_Athens.jpg/1920px-Raphael_School_of_Athens.jpg" 
-                 class="w-full h-full object-cover opacity-40 hero-bg" 
-                 alt="School of Athens"
-                 onerror="this.style.display='none'; this.parentElement.style.backgroundColor='#111';">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent"></div>
-            <div class="absolute inset-0 bg-gradient-to-b from-[#050505]/80 via-transparent to-transparent"></div>
+    <!-- Hero Section -->
+    <header class="relative min-h-[70vh] flex flex-col justify-center items-center text-center px-4 overflow-hidden pt-16">
+        <div class="absolute inset-0 z-[-1] opacity-50 bg-[url('https://www.transparenttextures.com/patterns/white-wall-3-2.png')]"></div>
+        
+        <div class="absolute right-0 bottom-0 w-1/3 h-full z-[-1] opacity-40 hidden lg:block">
+            <img src="https://images.unsplash.com/photo-1559630985-1823528b4952?q=80&w=800&auto=format&fit=crop" 
+                 class="w-full h-full object-cover object-top grayscale mask-image-gradient" 
+                 style="-webkit-mask-image: linear-gradient(to left, black, transparent);"
+                 alt="Marcus Aurelius">
         </div>
 
-        <!-- Centerpiece Content -->
-        <div class="relative z-10 text-center px-4" data-aos="fade-up" data-aos-duration="2000">
-            <p class="text-gold-light text-xs md:text-sm tracking-[0.8em] uppercase mb-8 font-sans animate-pulse">Triết lý của những vị vua</p>
-            
-            <h1 class="text-7xl md:text-[10rem] font-display font-bold text-white leading-none mb-4 mix-blend-overlay opacity-90 tracking-tighter">
+        <div class="max-w-3xl mx-auto" data-aos="fade-up" data-aos-duration="1000">
+            <p class="text-bronze text-xs font-bold tracking-[0.3em] uppercase mb-4">Triết lý của sự tự do</p>
+            <h1 class="text-5xl md:text-8xl font-display font-bold text-ink mb-4 leading-none">
                 KHẮC KỶ
             </h1>
-            
-            <div class="h-px w-24 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto my-10"></div>
-            
-            <p class="font-serif text-2xl md:text-4xl text-gray-300 italic font-light max-w-3xl mx-auto leading-relaxed text-metallic">
-                "Ngươi có quyền lực đối với tâm trí mình, không phải các sự kiện bên ngoài."
+            <div class="w-16 h-px bg-bronze mx-auto mb-6"></div>
+            <p class="font-body text-lg md:text-2xl text-gray-700 italic mb-8 leading-relaxed max-w-xl mx-auto">
+                "Không phải sự việc làm ta phiền muộn, mà là cách ta nhìn nhận về sự việc đó."
             </p>
-            <p class="mt-6 text-xs text-gold uppercase tracking-[0.3em] font-sans">— Marcus Aurelius —</p>
-        </div>
-
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-60">
-            <span class="text-[10px] uppercase tracking-[0.3em] text-white">Khám phá</span>
-            <div class="w-px h-24 bg-gradient-to-b from-gold to-transparent"></div>
+            <div class="flex gap-4 justify-center">
+                <a href="#mindset" class="bg-ink text-white px-6 py-2.5 text-xs font-bold uppercase tracking-widest hover:bg-bronze transition shadow-lg">Khám phá ngay</a>
+            </div>
         </div>
     </header>
 
-    <!-- 1. Mindset: The Duel (Sisyphus vs Sage) -->
-    <section id="mindset" class="py-32 relative bg-[#050505]">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-24 border-b border-white/10 pb-8">
-                <div>
-                    <span class="text-gold text-xs font-bold tracking-widest uppercase mb-2 block">Chương I</span>
-                    <h2 class="text-5xl font-display text-white">Cuộc Chiến Tâm Trí</h2>
-                </div>
-                <p class="text-gray-500 font-serif italic text-lg mt-4 md:mt-0 max-w-md text-right">
-                    Thoát khỏi vòng lặp vô tận của ham muốn để tìm thấy sự bình yên vĩnh cửu.
-                </p>
+    <!-- 1. Mindset -->
+    <section id="mindset" class="py-12 bg-white border-y border-[#E5E5E5] relative overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?q=80&w=2000&auto=format&fit=crop" 
+                 class="w-full h-full object-cover object-center opacity-20 grayscale" 
+                 alt="Classical Sketch">
+        </div>
+        
+        <div class="max-w-5xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-8" data-aos="fade-up">
+                <h2 class="text-3xl font-display font-bold text-ink mb-1 bg-white/80 inline-block px-4 py-1 rounded backdrop-blur-sm shadow-sm">Tư Duy Cốt Lõi</h2>
+                <div class="divider"></div>
             </div>
 
-            <div class="grid lg:grid-cols-2 gap-0 border border-white/10">
-                <!-- Left: The Problem (Sisyphus) -->
-                <div class="group relative h-[600px] overflow-hidden border-r border-white/10 img-fallback">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Titian_-_Sisyphus_-_Prado.jpg/800px-Titian_-_Sisyphus_-_Prado.jpg" 
-                         class="absolute inset-0 w-full h-full object-cover grayscale brightness-50 group-hover:scale-110 group-hover:grayscale-0 transition duration-[1.5s]" 
-                         alt="Sisyphus"
-                         onerror="this.style.display='none'; this.parentElement.classList.add('bg-[#150000]');">
-                    <div class="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition duration-700"></div>
-                    
-                    <div class="absolute inset-0 p-12 flex flex-col justify-center items-center text-center z-10 transition duration-500 group-hover:-translate-y-4">
-                        <i class="fas fa-infinity text-5xl text-red-500/80 mb-6 opacity-80"></i>
-                        <h3 class="text-3xl font-display text-white mb-4">Vòng Lặp Khoái Lạc</h3>
-                        <p class="text-gray-400 font-serif text-lg leading-relaxed max-w-sm">
-                            Như Sisyphus đẩy đá, ta nhanh chóng chán nản những gì đã đạt được và khao khát cái mới. Một cuộc đua không có vạch đích.
-                        </p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="classic-card p-8 rounded-sm relative overflow-hidden group" data-aos="fade-right">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-red-800"></div>
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-display font-bold text-ink">Vòng Lặp Khoái Lạc</h3>
+                        <i class="fas fa-infinity text-red-800 text-2xl opacity-40"></i>
                     </div>
+                    <p class="text-gray-800 leading-relaxed text-sm font-body">
+                        Con người nhanh chóng <strong>"thích nghi"</strong> với những gì đạt được và bắt đầu thèm khát cái lớn hơn. Giống như chạy trên máy chạy bộ: tốn sức nhưng không đi đến đâu.
+                    </p>
                 </div>
 
-                <!-- Right: The Solution (Wanderer above Sea of Fog) -->
-                <div class="group relative h-[600px] overflow-hidden img-fallback">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Caspar_David_Friedrich_-_Wanderer_above_the_Sea_of_Fog_-_Google_Art_Project_%282%29.jpg/800px-Caspar_David_Friedrich_-_Wanderer_above_the_Sea_of_Fog_-_Google_Art_Project_%282%29.jpg" 
-                         class="absolute inset-0 w-full h-full object-cover grayscale brightness-50 group-hover:scale-110 group-hover:grayscale-0 transition duration-[1.5s]" 
-                         alt="Wanderer"
-                         onerror="this.style.display='none'; this.parentElement.classList.add('bg-[#001015]');">
-                    <div class="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition duration-700"></div>
-                    
-                    <div class="absolute inset-0 p-12 flex flex-col justify-center items-center text-center z-10 transition duration-500 group-hover:-translate-y-4">
-                        <i class="fas fa-mountain text-5xl text-gold/80 mb-6 opacity-80"></i>
-                        <h3 class="text-3xl font-display text-white mb-4">Sự Bình Thản</h3>
-                        <p class="text-gray-400 font-serif text-lg leading-relaxed max-w-sm">
-                            Đứng vững trên đỉnh cao của lý trí. Không phải là không cảm xúc, mà là tự do khỏi những cảm xúc tiêu cực.
-                        </p>
+                <div class="classic-card p-8 rounded-sm relative overflow-hidden group" data-aos="fade-left">
+                    <div class="absolute top-0 right-0 w-1 h-full bg-bronze"></div>
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-display font-bold text-ink">Sự Bình Thản</h3>
+                        <i class="fas fa-mountain text-bronze text-2xl opacity-40"></i>
                     </div>
+                    <p class="text-gray-800 leading-relaxed text-sm font-body text-right">
+                        Vắng bóng cảm xúc tiêu cực (lo âu, sợ hãi) và tràn đầy cảm xúc tích cực. Tâm trí vững chãi như hòn đá tảng giữa sóng gió cuộc đời.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 2. Control: Pillars of Eternity (Interactive) -->
-    <section id="control" class="min-h-[800px] bg-[#080808] relative flex flex-col border-t border-white/5">
-        <div class="relative z-10 text-center py-12">
-            <span class="text-gold text-xs font-bold tracking-widest uppercase block mb-2">Chương II</span>
-            <h2 class="text-4xl font-display text-white">Tam Phân Quyền Kiểm Soát</h2>
-        </div>
+    <!-- 2. Control (ĐÃ FIX THẲNG HÀNG) -->
+    <section id="control" class="py-12 bg-[#F9F7F2]">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-10" data-aos="fade-up">
+                <h2 class="text-3xl font-display font-bold text-ink mb-1">Tam Phân Quyền</h2>
+                <p class="text-xs text-gray-500 italic uppercase tracking-widest">Phân loại để tự do</p>
+            </div>
 
-        <div class="flex-1 flex flex-col md:flex-row w-full h-full relative">
-            <!-- Pillar 1: Storm (No Control) -->
-            <div class="pillar-card border-r border-white/10 group img-fallback">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/The_Shipwreck_of_the_Minotaur_-_J.M.W._Turner.jpg/800px-The_Shipwreck_of_the_Minotaur_-_J.M.W._Turner.jpg" 
-                     class="absolute inset-0 w-full h-full object-cover transition duration-1000 transform group-hover:scale-110" 
-                     alt="Storm"
-                     onerror="this.style.display='none'; this.parentElement.classList.add('bg-gray-800');">
-                <div class="absolute inset-0 bg-black/70 group-hover:bg-black/30 transition duration-700"></div>
+            <div class="grid md:grid-cols-3 gap-4 items-stretch"> <!-- items-stretch để các thẻ cao bằng nhau -->
                 
-                <div class="absolute bottom-0 left-0 w-full p-12 text-center md:text-left">
-                    <h3 class="text-3xl md:text-5xl font-display text-gray-500 group-hover:text-white transition duration-500 mb-2">Vận Mệnh</h3>
-                    <div class="w-12 h-1 bg-gray-500 group-hover:bg-white mb-6 transition-all duration-500"></div>
-                    <div class="pillar-content">
-                        <p class="text-xs text-white uppercase tracking-widest mb-4 font-bold">Không Kiểm Soát</p>
-                        <ul class="text-gray-200 font-serif text-lg space-y-2 mb-4">
-                            <li>Quá khứ đã qua</li>
-                            <li>Tương lai chưa tới</li>
-                            <li>Ý kiến người khác</li>
-                        </ul>
-                        <span class="text-[10px] border border-white/30 px-3 py-1 text-white uppercase tracking-widest">Chấp nhận</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Pillar 2: Archer (Partial Control) -->
-            <div class="pillar-card border-r border-white/10 group img-fallback">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Hercules_killing_the_birds_of_Stymphalis_-_Bourdelle_-_Mus%C3%A9e_d%27Orsay.jpg/600px-Hercules_killing_the_birds_of_Stymphalis_-_Bourdelle_-_Mus%C3%A9e_d%27Orsay.jpg" 
-                     class="absolute inset-0 w-full h-full object-cover transition duration-1000 transform group-hover:scale-110" 
-                     alt="Archer"
-                     onerror="this.style.display='none'; this.parentElement.classList.add('bg-[#1a1500]');">
-                <div class="absolute inset-0 bg-black/70 group-hover:bg-black/30 transition duration-700"></div>
-                
-                <div class="absolute bottom-0 left-0 w-full p-12 text-center md:text-left">
-                    <h3 class="text-3xl md:text-5xl font-display text-gold group-hover:text-gold-light transition duration-500 mb-2">Hành Động</h3>
-                    <div class="w-12 h-1 bg-gold group-hover:bg-gold-light mb-6 transition-all duration-500"></div>
-                    <div class="pillar-content">
-                        <p class="text-xs text-gold uppercase tracking-widest mb-4 font-bold">Kiểm Soát Một Phần</p>
-                        <p class="text-gray-200 font-serif text-lg leading-relaxed mb-4">
-                            Như người bắn cung: Ta kiểm soát việc ngắm bắn, nhưng gió và đích đến là ngoại cảnh.
-                        </p>
-                        <span class="text-[10px] bg-gold text-black px-4 py-2 uppercase tracking-widest font-bold">Nội tại hóa mục tiêu</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Pillar 3: Mountain (Total Control) -->
-            <div class="pillar-card group img-fallback">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Everest_North_Face_toward_Base_Camp_Tibet_Luca_Galuzzi_2006.jpg/800px-Everest_North_Face_toward_Base_Camp_Tibet_Luca_Galuzzi_2006.jpg" 
-                     class="absolute inset-0 w-full h-full object-cover transition duration-1000 transform group-hover:scale-110" 
-                     alt="Mountain"
-                     onerror="this.style.display='none'; this.parentElement.classList.add('bg-gray-800');">
-                <div class="absolute inset-0 bg-black/70 group-hover:bg-black/30 transition duration-700"></div>
-                
-                <div class="absolute bottom-0 left-0 w-full p-12 text-center md:text-left">
-                    <h3 class="text-3xl md:text-5xl font-display text-gray-500 group-hover:text-white transition duration-500 mb-2">Tâm Trí</h3>
-                    <div class="w-12 h-1 bg-gray-500 group-hover:bg-white mb-6 transition-all duration-500"></div>
-                    <div class="pillar-content">
-                        <p class="text-xs text-white uppercase tracking-widest mb-4 font-bold">Kiểm Soát Hoàn Toàn</p>
-                        <ul class="text-gray-200 font-serif text-lg space-y-2 mb-4">
-                            <li>Giá trị sống</li>
-                            <li>Phẩm hạnh</li>
-                            <li>Cách nhìn nhận</li>
-                        </ul>
-                        <span class="text-[10px] border border-white/30 px-3 py-1 text-white uppercase tracking-widest">Làm chủ</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. Toolbox: Art Gallery Grid -->
-    <section id="toolbox" class="py-32 bg-[#0a0a0a]">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-24" data-aos="fade-up">
-                <span class="text-gold text-xs font-bold tracking-widest uppercase mb-2 block">Chương III</span>
-                <h2 class="text-5xl font-display text-white">Vắc-xin Tâm Hồn</h2>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-16">
-                <!-- Tool 1: Memento Mori (Vanitas) -->
-                <div class="relative group" data-aos="fade-right">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg blur opacity-20 group-hover:opacity-50 transition duration-1000"></div>
-                    <div class="relative bg-[#111] p-1 border border-white/10 rounded-lg overflow-hidden">
-                        <div class="h-64 overflow-hidden relative img-fallback">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Philippe_de_Champaigne_-_Vanitas_-_Google_Art_Project.jpg/800px-Philippe_de_Champaigne_-_Vanitas_-_Google_Art_Project.jpg" 
-                                 class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" 
-                                 alt="Vanitas"
-                                 onerror="this.style.display='none'; this.parentElement.classList.add('bg-black');">
-                            <div class="absolute top-4 right-4 bg-black/50 backdrop-blur-md px-4 py-1 border border-white/20">
-                                <span class="text-xs text-white uppercase tracking-widest">Chiến thuật 01</span>
+                <!-- Column 1 -->
+                <div class="bg-white p-6 rounded shadow-sm border-t-4 border-gray-400 group hover:shadow-md transition flex flex-col h-full justify-between" data-aos="fade-up">
+                    <div>
+                        <div class="flex flex-col items-center mb-4">
+                            <div class="h-10 flex items-center justify-center mb-2">
+                                <i class="fas fa-ban text-2xl text-gray-400"></i>
                             </div>
+                            <div class="h-8 flex items-center justify-center mb-1">
+                                <h3 class="text-lg font-bold text-gray-700">Không Kiểm Soát</h3>
+                            </div>
+                            <p class="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Vận Mệnh</p>
                         </div>
-                        <div class="p-8">
-                            <h3 class="text-2xl font-display text-white mb-2 group-hover:text-gold transition">Tưởng Tượng Tiêu Cực</h3>
-                            <p class="text-gray-400 font-serif italic mb-4">"Memento Mori - Hãy nhớ ngươi sẽ chết."</p>
-                            <p class="text-sm text-gray-500 leading-relaxed mb-6">
-                                Hình dung về việc mất đi những gì đang có (người thân, tài sản) để kích hoạt lòng biết ơn và chấm dứt sự thờ ơ.
-                            </p>
-                            <span class="text-xs text-white uppercase tracking-[0.2em] border-b border-white/30 pb-1">Thực hành ngay</span>
-                        </div>
+                        
+                        <ul class="text-gray-600 space-y-2 text-xs border-t border-gray-100 pt-3 mb-4">
+                            <li>• Quá khứ & Tương lai</li>
+                            <li>• Thời tiết, thiên tai</li>
+                            <li>• Ý kiến người khác</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-auto text-center w-full">
+                        <span class="inline-block bg-gray-100 text-gray-600 px-4 py-1.5 rounded text-[10px] font-bold uppercase w-full">Chấp nhận</span>
                     </div>
                 </div>
 
-                <!-- Tool 2: Voluntary Discomfort (Diogenes) -->
-                <div class="relative group" data-aos="fade-left">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-gold to-orange-600 rounded-lg blur opacity-20 group-hover:opacity-50 transition duration-1000"></div>
-                    <div class="relative bg-[#111] p-1 border border-white/10 rounded-lg overflow-hidden">
-                        <div class="h-64 overflow-hidden relative img-fallback">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Jean-L%C3%A9on_G%C3%A9r%C3%B4me_-_Diogenes_-_Walters_37131.jpg/800px-Jean-L%C3%A9on_G%C3%A9r%C3%B4me_-_Diogenes_-_Walters_37131.jpg" 
-                                 class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" 
-                                 alt="Diogenes"
-                                 onerror="this.style.display='none'; this.parentElement.classList.add('bg-black');">
-                            <div class="absolute top-4 right-4 bg-black/50 backdrop-blur-md px-4 py-1 border border-white/20">
-                                <span class="text-xs text-white uppercase tracking-widest">Chiến thuật 02</span>
+                <!-- Column 2 (Highlight - Đã bỏ hiệu ứng nhô lên để thẳng hàng) -->
+                <div class="bg-white p-6 rounded shadow-md border-t-4 border-bronze group hover:shadow-xl transition flex flex-col h-full justify-between" data-aos="fade-up" data-aos-delay="100">
+                    <div>
+                        <div class="flex flex-col items-center mb-4">
+                            <div class="h-10 flex items-center justify-center mb-2">
+                                <i class="fas fa-bullseye text-3xl text-bronze"></i>
                             </div>
+                            <div class="h-8 flex items-center justify-center mb-1">
+                                <h3 class="text-xl font-bold text-ink">Kiểm Soát 1 Phần</h3>
+                            </div>
+                            <p class="text-[10px] text-bronze uppercase tracking-widest font-bold">Hành Động</p>
                         </div>
-                        <div class="p-8">
-                            <h3 class="text-2xl font-display text-white mb-2 group-hover:text-gold transition">Tự Tiết Chế</h3>
-                            <p class="text-gray-400 font-serif italic mb-4">"Rèn luyện ý chí như cơ bắp."</p>
-                            <p class="text-sm text-gray-500 leading-relaxed mb-6">
-                                Chủ động chọn sự khó chịu nhẹ (tắm lạnh, ăn đạm bạc, ngủ đất) để mở rộng vùng thoải mái và không còn sợ hãi sự thiếu thốn.
-                            </p>
-                            <span class="text-xs text-white uppercase tracking-[0.2em] border-b border-white/30 pb-1">Thực hành ngay</span>
+
+                        <p class="text-gray-600 text-center mb-3 italic text-xs">"Ta kiểm soát nỗ lực, gió là ngoại cảnh."</p>
+                        <ul class="text-gray-800 space-y-2 text-xs font-medium border-t border-gray-100 pt-3 mb-4">
+                            <li>• Nỗ lực làm việc</li>
+                            <li>• Luyện tập thi đấu</li>
+                            <li>• Cách đối xử</li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-auto text-center w-full">
+                        <span class="inline-block bg-bronze text-white px-4 py-1.5 rounded text-[10px] font-bold uppercase shadow w-full">Nội tại hóa</span>
+                    </div>
+                </div>
+
+                <!-- Column 3 -->
+                <div class="bg-white p-6 rounded shadow-sm border-t-4 border-green-700 group hover:shadow-md transition flex flex-col h-full justify-between" data-aos="fade-up" data-aos-delay="200">
+                    <div>
+                        <div class="flex flex-col items-center mb-4">
+                            <div class="h-10 flex items-center justify-center mb-2">
+                                <i class="fas fa-brain text-2xl text-green-700/60"></i>
+                            </div>
+                            <div class="h-8 flex items-center justify-center mb-1">
+                                <h3 class="text-lg font-bold text-green-900">Kiểm Soát 100%</h3>
+                            </div>
+                            <p class="text-[10px] text-green-600 uppercase tracking-widest font-bold">Tâm Trí</p>
                         </div>
+
+                        <ul class="text-gray-600 space-y-2 text-xs border-t border-gray-100 pt-3 mb-4">
+                            <li>• Mục tiêu nội tại</li>
+                            <li>• Giá trị sống</li>
+                            <li>• Phán xét của ta</li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-auto text-center w-full">
+                        <span class="inline-block bg-green-50 text-green-800 px-4 py-1.5 rounded text-[10px] font-bold uppercase border border-green-200 w-full">Làm chủ</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer: Minimalist Luxury -->
-    <footer class="bg-[#020202] py-24 border-t border-white/5 relative overflow-hidden">
-        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
-            <h2 class="font-display text-5xl md:text-7xl font-bold text-white mb-6 opacity-20 hover:opacity-100 transition duration-1000 cursor-default">AMOR FATI</h2>
-            <p class="text-gold font-serif italic text-xl mb-12">"Hãy yêu lấy vận mệnh của mình, vì đó là điều duy nhất bạn thực sự sở hữu."</p>
-            
-            <div class="flex justify-center gap-8 mb-16">
-                <a href="#" class="w-12 h-12 flex items-center justify-center border border-white/10 rounded-full text-gray-500 hover:text-white hover:border-gold hover:scale-110 transition duration-300"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="w-12 h-12 flex items-center justify-center border border-white/10 rounded-full text-gray-500 hover:text-white hover:border-gold hover:scale-110 transition duration-300"><i class="fab fa-instagram"></i></a>
+    <!-- 3. Toolbox -->
+    <section id="toolbox" class="py-12 bg-white border-t border-[#E5E5E5]">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-10" data-aos="fade-up">
+                <h2 class="text-3xl font-display font-bold text-ink mb-1">Vắc-xin Tâm Hồn</h2>
+                <div class="divider"></div>
             </div>
-            
-            <div class="text-[10px] text-gray-700 uppercase tracking-[0.3em]">
-                &copy; 2024 Philosophy Masterpiece. Designed for the Modern Stoic.
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Tool 1 -->
+                <div class="flex gap-4 items-start p-5 border border-gray-100 hover:border-bronze transition rounded-sm bg-[#F9F7F2]" data-aos="fade-right">
+                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center border border-gray-200 flex-shrink-0 text-bronze">
+                        <i class="fas fa-skull"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-ink">Tưởng Tượng Tiêu Cực</h3>
+                        <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Memento Mori</p>
+                        <p class="text-sm text-gray-600 leading-snug">
+                            Hình dung mất đi những gì đang có để kích hoạt lòng biết ơn và trân trọng hiện tại.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Tool 2 -->
+                <div class="flex gap-4 items-start p-5 border border-gray-100 hover:border-blue-800 transition rounded-sm bg-[#F9F7F2]" data-aos="fade-left">
+                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center border border-gray-200 flex-shrink-0 text-blue-800">
+                        <i class="fas fa-snowflake"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-ink">Tự Tiết Chế</h3>
+                        <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Rèn Luyện Ý Chí</p>
+                        <p class="text-sm text-gray-600 leading-snug">
+                            Chủ động chọn sự khó chịu nhẹ (tắm nước lạnh, ăn đạm bạc) để mở rộng vùng thoải mái.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#1A1A1A] py-10 text-center text-white">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="font-display text-2xl font-bold text-bronze mb-2 tracking-widest">AMOR FATI</h2>
+            <p class="text-gray-400 italic font-body text-sm mb-6">"Yêu lấy vận mệnh của mình"</p>
+            <div class="w-10 h-px bg-gray-700 mx-auto mb-6"></div>
+            <div class="text-[10px] text-gray-500 uppercase tracking-widest">
+                &copy; 2024 Philosophy Portal. Light Edition.
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            offset: 50,
-            duration: 1200,
-            once: true,
-            easing: 'ease-out-cubic'
-        });
-
-        // Particle System
-        const particlesContainer = document.getElementById('particles');
-        const particleCount = 30;
-
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement('div');
-            particle.classList.add('particle');
-            
-            // Random positioning
-            particle.style.left = Math.random() * 100 + 'vw';
-            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-            particle.style.animationDelay = (Math.random() * 10) + 's';
-            
-            particlesContainer.appendChild(particle);
-        }
+        window.onload = function() {
+            if (typeof AOS !== 'undefined') {
+                AOS.init({ offset: 30, duration: 800, once: true, easing: 'ease-out-cubic' });
+            }
+        };
     </script>
 </body>
 </html>
