@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infographic: Chủ Nghĩa Khắc Kỷ (Font Việt Hóa)</title>
+    <title>Infographic: Chủ Nghĩa Khắc Kỷ</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Playfair Display, Noto Serif, Be Vietnam Pro -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -22,12 +22,11 @@
                 extend: {
                     colors: {
                         stoic: {
-                            dark: '#2c2c2c',       /* Xám đậm */
-                            gold: '#c5a059',       /* Vàng kim */
+                            dark: '#2c2c2c',       
+                            gold: '#c5a059',       
                             gold_light: '#e6c88a',
-                            marble: '#f9f9f9',     /* Trắng cẩm thạch */
-                            paper: '#ffffff',
-                            blue_grey: '#e2e8f0'
+                            marble: '#f9f9f9',     
+                            epicurus: '#0f766e',   
                         }
                     },
                     fontFamily: {
@@ -65,22 +64,59 @@
             border-color: #c5a059;
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
         }
+
+        /* Bubble Styles */
+        .bubble {
+            position: relative;
+            background: #fff;
+            border-radius: .4em;
+        }
+        .bubble:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            border: 12px solid transparent;
+            border-top-color: #fff;
+            border-bottom: 0;
+            margin-left: -12px;
+            margin-bottom: -12px;
+        }
+        .bubble-left:after { left: 20%; }
+        .bubble-right:after { right: 20%; }
     </style>
 </head>
 <body class="font-sans antialiased text-stoic-dark">
 
     <!-- Header -->
-    <header class="h-screen flex flex-col items-center justify-center text-center px-4 relative overflow-hidden bg-stoic-dark text-stoic-marble">
+    <header class="min-h-screen flex flex-col items-center justify-center text-center px-4 relative overflow-hidden bg-stoic-dark text-stoic-marble py-20">
         <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-500 to-black"></div>
-        <div class="z-10" data-aos="fade-up" data-aos-duration="1500">
+        <div class="z-10 w-full max-w-5xl" data-aos="fade-up" data-aos-duration="1500">
             <i class="fas fa-columns text-6xl text-stoic-gold mb-6"></i>
             <h1 class="text-5xl md:text-7xl font-display font-bold text-stoic-gold mb-4 tracking-wider text-shadow-lg uppercase">Chủ Nghĩa Khắc Kỷ</h1>
-            <p class="text-xl md:text-2xl font-serif text-gray-300 italic mb-8">Chiến lược cho cuộc sống & Nghệ thuật của sự bình thản</p>
-            <div class="flex gap-4 justify-center text-sm md:text-base font-sans tracking-widest text-stoic-gold opacity-90 uppercase font-semibold">
-                <span>Tư duy</span> • <span>Công cụ</span> • <span>Lá chắn</span>
+            <p class="text-xl md:text-2xl font-serif text-gray-300 italic mb-10">Chiến lược cho cuộc sống & Nghệ thuật của sự bình thản</p>
+            
+            <!-- IMAGE SECTION: UPDATED WITH YOUR DRIVE IMAGE -->
+            <div class="relative w-full max-w-4xl mx-auto mb-10 rounded-lg overflow-hidden border-4 border-stoic-gold/30 shadow-2xl group">
+                <div class="absolute inset-0 bg-stoic-gold/10 group-hover:bg-transparent transition duration-500 z-10 pointer-events-none"></div>
+                
+                <!-- Ảnh từ Google Drive của bạn (Đã chuyển sang link Direct View) -->
+                <img src="https://drive.google.com/uc?export=view&id=1ogwEkc1WMFmzofWrU13idXbdrH8XNPvv" 
+                     alt="Hệ Điều Hành Cho Tâm Trí - Stoicism Illustration" 
+                     class="w-full h-auto object-contain transform group-hover:scale-[1.02] transition duration-1000 bg-gray-100">
+                
+                <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-6 text-left z-20">
+                    <p class="text-stoic-gold font-bold font-display text-lg">Hệ Điều Hành Cho Tâm Trí</p>
+                    <p class="text-white/80 font-serif italic text-sm">"Biến nỗi đau thành sức mạnh"</p>
+                </div>
+            </div>
+            
+            <div class="flex flex-wrap gap-4 justify-center text-sm md:text-base font-sans tracking-widest text-stoic-gold opacity-90 uppercase font-semibold">
+                <span>Tư duy</span> • <span>Công cụ</span> • <span>Đối Lập</span>
             </div>
         </div>
-        <div class="absolute bottom-10 animate-bounce">
+        <div class="mt-10 animate-bounce">
             <i class="fas fa-chevron-down text-stoic-gold text-2xl"></i>
         </div>
     </header>
@@ -90,7 +126,7 @@
         <div class="flex items-center gap-4 mb-12" data-aos="fade-right">
             <span class="text-6xl font-bold text-gray-200 font-display absolute -z-10 transform -translate-x-4 -translate-y-4">01</span>
             <span class="text-4xl font-bold text-stoic-gold font-display relative z-10">I.</span>
-            <h2 class="text-3xl md:text-4xl font-display text-stoic-dark font-bold">Tư Duy Cốt Lõi: Hạnh Phúc</h2>
+            <h2 class="text-3xl md:text-4xl font-display text-stoic-dark font-bold">Tư Duy Cốt Lõi</h2>
         </div>
 
         <div class="grid md:grid-cols-2 gap-12">
@@ -100,15 +136,10 @@
                     <i class="fas fa-exclamation-triangle mr-2"></i> Vấn Đề: Vòng Lặp Khoái Lạc
                 </h3>
                 <p class="text-gray-600 mb-6 leading-relaxed font-serif text-base">
-                    Con người nhanh chóng <strong>"thích nghi"</strong> với những gì đạt được (nhà mới, lương cao) và bắt đầu thèm khát cái lớn hơn. 
+                    Con người nhanh chóng <strong>"thích nghi"</strong> với những gì đạt được và bắt đầu thèm khát cái lớn hơn. 
                     <br><span class="italic mt-2 block text-red-600 font-semibold">→ Kết quả: Sự bất mãn vĩnh viễn.</span>
                 </p>
                 <div class="bg-gray-100 p-4 rounded-lg">
-                    <div class="flex justify-between text-xs text-gray-500 mb-1 font-sans">
-                        <span>Mong muốn</span>
-                        <span>Đạt được</span>
-                        <span>Chán</span>
-                    </div>
                     <div class="h-2 bg-gray-300 rounded-full overflow-hidden">
                         <div class="h-full bg-red-500 w-2/3 animate-[pulse_2s_infinite]"></div>
                     </div>
@@ -118,27 +149,21 @@
             <!-- Tranquility & Virtue -->
             <div class="stoic-card p-8 rounded-xl border-l-4 border-stoic-gold bg-stoic-marble" data-aos="fade-up" data-aos-delay="200">
                 <h3 class="text-xl font-bold text-stoic-gold mb-4 font-display flex items-center">
-                    <i class="fas fa-balance-scale mr-2"></i> Giải Pháp: Đích Đến Thực Sự
+                    <i class="fas fa-balance-scale mr-2"></i> Giải Pháp: Đích Đến
                 </h3>
                 <div class="space-y-4">
                     <div class="bg-white p-4 rounded shadow-sm border border-gray-100">
-                        <h4 class="font-bold text-stoic-dark mb-1 text-base font-sans">1. Sự Bình Thản (Tranquility)</h4>
-                        <p class="text-sm text-gray-600 font-serif">
-                            Vắng bóng cảm xúc tiêu cực (lo âu, ghen tị) + Tràn đầy niềm vui phi đối tượng (vui vì được sống).
-                        </p>
+                        <h4 class="font-bold text-stoic-dark mb-1 text-base font-sans">1. Sự Bình Thản</h4>
+                        <p class="text-sm text-gray-600 font-serif">Vắng bóng cảm xúc tiêu cực + Tràn đầy niềm vui.</p>
                     </div>
                     <div class="bg-white p-4 rounded shadow-sm border border-gray-100">
-                        <h4 class="font-bold text-stoic-dark mb-1 text-base font-sans">2. Đức Hạnh (Virtue)</h4>
-                        <p class="text-sm text-gray-600 font-serif">
-                            Thực hiện tốt chức năng con người: Dùng <strong>Lý trí</strong> & Sống <strong>Có ích cho xã hội</strong>.
-                        </p>
+                        <h4 class="font-bold text-stoic-dark mb-1 text-base font-sans">2. Đức Hạnh</h4>
+                        <p class="text-sm text-gray-600 font-serif">Sống thuận theo tự nhiên & Lý trí.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <div class="section-divider"></div>
 
     <!-- SECTION 2: TOOLBOX -->
     <section class="max-w-7xl mx-auto px-4 py-10 bg-white shadow-inner rounded-3xl mb-10 border border-gray-100">
@@ -151,124 +176,37 @@
         <!-- 2.1 Negative Visualization -->
         <div class="mb-16 px-4">
             <h3 class="text-2xl text-stoic-gold font-display mb-6 text-center font-bold">1. Tưởng Tượng Tiêu Cực</h3>
-            <p class="text-center text-gray-500 mb-8 italic text-sm font-serif">Không phải bi quan, mà là thuốc giải cho sự "cả thèm chóng chán".</p>
-            
             <div class="grid md:grid-cols-2 gap-8">
-                <!-- Tưởng tượng hồi cứu -->
-                <div class="bg-blue-50 p-6 rounded-lg border border-blue-100 hover:shadow-lg transition relative overflow-hidden group" data-aos="zoom-in-right">
-                    <div class="absolute top-0 right-0 bg-blue-200 text-blue-800 text-xs px-2 py-1 font-bold rounded-bl font-sans">CHIẾN THUẬT 1</div>
-                    <div class="flex items-start gap-4">
-                        <i class="fas fa-history text-3xl text-blue-600 mt-1"></i>
-                        <div>
-                            <h4 class="text-lg font-bold text-blue-900 font-display">Tưởng tượng Hồi Cứu</h4>
-                            <p class="text-sm text-gray-700 mt-2 font-serif">
-                                Thay vì nghĩ về tương lai mất mát, hãy nghĩ: <em>"Nếu quá khứ thay đổi và mình chưa bao giờ có những thứ này (con cái, việc làm)?"</em>
-                            </p>
-                            <p class="text-blue-700 text-sm mt-2 font-bold bg-white inline-block px-2 py-1 rounded border border-blue-100 font-sans">→ Muốn lại những thứ mình đã có.</p>
-                        </div>
-                    </div>
+                <div class="bg-blue-50 p-6 rounded-lg border border-blue-100 hover:shadow-lg transition group" data-aos="zoom-in-right">
+                    <h4 class="text-lg font-bold text-blue-900 font-display mb-2">Tưởng tượng Hồi Cứu</h4>
+                    <p class="text-sm text-gray-700 font-serif">"Nếu mình chưa bao giờ có những thứ này?" → Biết ơn hiện tại.</p>
                 </div>
-
-                <!-- Mỏ neo cái chết -->
-                <div class="bg-purple-50 p-6 rounded-lg border border-purple-100 hover:shadow-lg transition relative overflow-hidden group" data-aos="zoom-in-left">
-                    <div class="absolute top-0 right-0 bg-purple-200 text-purple-800 text-xs px-2 py-1 font-bold rounded-bl font-sans">CHIẾN THUẬT 2</div>
-                    <div class="flex items-start gap-4">
-                        <i class="fas fa-hourglass-half text-3xl text-purple-600 mt-1"></i>
-                        <div>
-                            <h4 class="text-lg font-bold text-purple-900 font-display">Mỏ Neo Cái Chết</h4>
-                            <p class="text-sm text-gray-700 mt-2 font-serif">
-                                Sống mỗi ngày như thể đó là ngày cuối cùng. Không phải để buông thả, mà để chấm dứt trạng thái "người mộng du".
-                            </p>
-                            <p class="text-purple-700 text-sm mt-2 font-bold bg-white inline-block px-2 py-1 rounded border border-purple-100 font-sans">→ Trân trọng từng khoảnh khắc.</p>
-                        </div>
-                    </div>
+                <div class="bg-purple-50 p-6 rounded-lg border border-purple-100 hover:shadow-lg transition group" data-aos="zoom-in-left">
+                    <h4 class="text-lg font-bold text-purple-900 font-display mb-2">Mỏ Neo Cái Chết</h4>
+                    <p class="text-sm text-gray-700 font-serif">Sống như thể ngày cuối cùng → Ngừng mộng du.</p>
                 </div>
             </div>
         </div>
 
         <!-- 2.2 Trichotomy of Control -->
         <div class="mb-16">
-             <h3 class="text-2xl text-stoic-gold font-display mb-2 text-center font-bold">2. Tam Phân Quyền Kiểm Soát</h3>
-             <p class="text-center text-gray-400 mb-8 text-xs uppercase tracking-widest font-sans font-semibold">Mô hình William B. Irvine</p>
-             
+             <h3 class="text-2xl text-stoic-gold font-display mb-4 text-center font-bold">2. Tam Phân Quyền Kiểm Soát</h3>
              <div class="grid lg:grid-cols-3 gap-4 rounded-2xl mx-4">
-                
-                <!-- Zone 1: No Control -->
-                <div class="bg-red-50 p-6 text-center group rounded-xl border border-red-100 hover:shadow-xl transition relative">
-                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-red-500 text-white text-xs px-3 py-1 rounded-full font-bold shadow font-sans">KHÔNG KIỂM SOÁT</div>
-                    <i class="fas fa-ban text-3xl text-red-400 mb-4 mt-2"></i>
-                    <ul class="text-sm text-red-800 space-y-2 font-serif text-left pl-4 list-disc">
-                        <li>Quá khứ</li>
-                        <li>Hiện tại (ngay khoảnh khắc này)</li>
-                        <li>Quy luật tự nhiên (mặt trời mọc)</li>
-                    </ul>
-                    <p class="mt-4 text-xs text-red-500 italic font-bold font-sans">→ Chấp nhận như Vận Mệnh</p>
+                <div class="bg-red-50 p-6 text-center rounded-xl border border-red-100">
+                    <span class="bg-red-500 text-white text-xs px-2 py-1 rounded font-bold">KHÔNG KIỂM SOÁT</span>
+                    <p class="mt-2 text-sm text-red-800 font-serif">Quá khứ, Quy luật tự nhiên.</p>
                 </div>
-
-                <!-- Zone 2: Partial Control -->
-                <div class="bg-yellow-50 p-6 text-center group rounded-xl border-2 border-yellow-400 shadow-xl relative transform lg:-translate-y-2 z-10">
-                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-yellow-500 text-white text-xs px-3 py-1 rounded-full font-bold shadow font-sans">KIỂM SOÁT MỘT PHẦN</div>
-                    <i class="fas fa-sliders-h text-3xl text-yellow-600 mb-4 mt-2"></i>
-                    <p class="text-sm text-yellow-900 mb-2 font-bold font-sans">Kết quả nỗ lực (thắng trận, thăng tiến, tình cảm).</p>
-                    
-                    <div class="text-left bg-white p-3 rounded shadow-md border border-yellow-200 mt-3">
-                        <p class="text-xs text-gray-500 font-bold uppercase mb-1 text-center font-sans">Chiến thuật: Nội tại hóa</p>
-                        <div class="space-y-1 font-sans">
-                            <span class="block text-gray-400 line-through text-xs"><i class="fas fa-times text-red-400 mr-1"></i> Mục tiêu: Phải thắng</span>
-                            <span class="block font-bold text-yellow-700 text-sm"><i class="fas fa-check text-green-500 mr-1"></i> Mục tiêu: Chơi hết khả năng</span>
-                        </div>
-                    </div>
+                <div class="bg-yellow-50 p-6 text-center rounded-xl border-2 border-yellow-400 shadow-xl transform lg:-translate-y-2">
+                    <span class="bg-yellow-500 text-white text-xs px-2 py-1 rounded font-bold">KIỂM SOÁT 1 PHẦN</span>
+                    <p class="mt-2 text-sm text-yellow-900 font-bold font-sans">Chiến thuật: Nội tại hóa mục tiêu.</p>
                 </div>
-
-                <!-- Zone 3: Total Control -->
-                <div class="bg-green-50 p-6 text-center group rounded-xl border border-green-100 hover:shadow-xl transition relative">
-                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-green-500 text-white text-xs px-3 py-1 rounded-full font-bold shadow font-sans">KIỂM SOÁT HOÀN TOÀN</div>
-                    <i class="fas fa-check-circle text-3xl text-green-500 mb-4 mt-2"></i>
-                    <ul class="text-sm text-green-800 space-y-2 font-serif text-left pl-4 list-disc">
-                        <li>Mục tiêu nội tại (do ta đặt)</li>
-                        <li>Giá trị cá nhân</li>
-                        <li>Quan điểm & cách nhìn nhận</li>
-                    </ul>
-                    <p class="mt-4 text-xs text-green-600 italic font-bold font-sans">→ Tập trung 100% năng lượng</p>
+                <div class="bg-green-50 p-6 text-center rounded-xl border border-green-100">
+                    <span class="bg-green-500 text-white text-xs px-2 py-1 rounded font-bold">KIỂM SOÁT HOÀN TOÀN</span>
+                    <p class="mt-2 text-sm text-green-800 font-serif">Mục tiêu, Giá trị, Quan điểm.</p>
                 </div>
              </div>
         </div>
-
-        <!-- 2.3 Psychological Vaccine -->
-        <div class="px-4 pb-10">
-            <h3 class="text-2xl text-stoic-gold font-display mb-6 text-center font-bold">3. Tự Tiết Chế: "Vắc-xin Tâm Lý"</h3>
-            <div class="bg-stoic-card border-l-4 border-gray-800 rounded-r-xl p-8 flex flex-col md:flex-row items-center gap-8" data-aos="flip-up">
-                <div class="md:w-1/3 text-center">
-                    <div class="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-2xl">
-                        <i class="fas fa-syringe"></i>
-                    </div>
-                    <h3 class="text-lg font-bold font-display text-gray-800">Chủ Động Chịu Khổ</h3>
-                    <p class="text-xs text-gray-500 mt-1 font-sans">Để chống lại vận rủi tương lai</p>
-                </div>
-                <div class="md:w-2/3 md:pl-8 md:border-l border-gray-200">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4 font-sans">
-                        <div class="flex items-center gap-2 text-sm text-gray-700">
-                            <i class="fas fa-bed text-stoic-gold"></i> Ngủ giường cứng
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-700">
-                            <i class="fas fa-tshirt text-stoic-gold"></i> Mặc phong phanh khi lạnh
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-700">
-                            <i class="fas fa-utensils text-stoic-gold"></i> Ăn thực phẩm đơn giản
-                        </div>
-                         <div class="flex items-center gap-2 text-sm text-gray-700">
-                            <i class="fas fa-shower text-stoic-gold"></i> Tắm nước lạnh
-                        </div>
-                    </div>
-                    <p class="text-sm bg-gray-100 p-3 rounded font-serif italic text-gray-600">
-                        "Lợi ích: Mở rộng vùng thoải mái, rèn luyện ý chí như cơ bắp & tăng khả năng tận hưởng tiện nghi bình thường."
-                    </p>
-                </div>
-            </div>
-        </div>
     </section>
-
-    <div class="section-divider"></div>
 
     <!-- SECTION 3: SOCIAL SHIELD -->
     <section class="max-w-6xl mx-auto px-4 py-10">
@@ -277,138 +215,52 @@
             <span class="text-4xl font-bold text-stoic-gold font-display relative z-10">III.</span>
             <h2 class="text-3xl md:text-4xl font-display text-stoic-dark font-bold">Lá Chắn Xã Hội</h2>
         </div>
-
-        <div class="grid md:grid-cols-2 gap-16">
-            
-            <!-- Column 1: Insults -->
-            <div data-aos="fade-up">
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="w-12 h-12 bg-stoic-gold rounded-full flex items-center justify-center text-white text-xl">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="text-2xl font-display font-bold text-stoic-dark">Khiên Chắn Lời Xúc Phạm</h3>
-                </div>
-                
-                <div class="space-y-4">
-                    <!-- Shield 1 -->
-                    <div class="group cursor-pointer">
-                        <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-gray-300 group-hover:border-stoic-gold transition hover:bg-yellow-50">
-                            <h4 class="font-bold flex justify-between text-gray-800 text-sm font-sans">
-                                1. Phân Tích Nguồn
-                                <i class="fas fa-chevron-down opacity-50 group-hover:opacity-100 transition text-stoic-gold"></i>
-                            </h4>
-                            <p class="text-xs text-gray-600 mt-2 hidden group-hover:block font-serif pl-2 border-l-2 border-gray-200 ml-1">
-                                Nếu kẻ xúc phạm là kẻ đáng khinh → Hãy thấy nhẹ nhõm vì bạn không giống họ.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Shield 2 -->
-                    <div class="group cursor-pointer">
-                        <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-gray-300 group-hover:border-stoic-gold transition hover:bg-yellow-50">
-                            <h4 class="font-bold flex justify-between text-gray-800 text-sm font-sans">
-                                2. Hài Hước Tự Hạ Thấp
-                                <i class="fas fa-chevron-down opacity-50 group-hover:opacity-100 transition text-stoic-gold"></i>
-                            </h4>
-                            <div class="hidden group-hover:block animate-fade-in">
-                                <p class="text-xs text-gray-600 mt-2 font-serif pl-2 border-l-2 border-gray-200 ml-1">
-                                    Tự đùa về khiếm khuyết của mình để tước vũ khí đối phương.
-                                </p>
-                                <p class="text-xs text-stoic-gold mt-1 font-bold pl-3 font-sans"><i class="fas fa-user-graduate mr-1"></i>Như Cato & Socrates đã làm.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Shield 3 -->
-                    <div class="group cursor-pointer">
-                        <div class="bg-white p-5 rounded-lg shadow-md border-l-4 border-gray-300 group-hover:border-stoic-gold transition hover:bg-yellow-50">
-                            <h4 class="font-bold flex justify-between text-gray-800 text-sm font-sans">
-                                3. Sự Im Lặng
-                                <i class="fas fa-chevron-down opacity-50 group-hover:opacity-100 transition text-stoic-gold"></i>
-                            </h4>
-                            <p class="text-xs text-gray-600 mt-2 hidden group-hover:block font-serif pl-2 border-l-2 border-gray-200 ml-1">
-                                Coi lời xúc phạm như tiếng chó sủa hay tiếng đá rơi. Nó là âm thanh vật lý vô nghĩa.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="stoic-card p-6 rounded-xl" data-aos="fade-up">
+                <h3 class="font-bold text-xl mb-4 font-display"><i class="fas fa-shield-alt text-stoic-gold mr-2"></i>Lời Xúc Phạm</h3>
+                <ul class="text-sm space-y-2 font-serif text-gray-600">
+                    <li>• Phân tích nguồn: Kẻ đáng khinh nói thì đừng bận tâm.</li>
+                    <li>• Hài hước: Tự đùa để tước vũ khí đối phương.</li>
+                </ul>
             </div>
-
-            <!-- Column 2: Anger -->
-            <div data-aos="fade-up" data-aos-delay="200">
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center text-white text-xl">
-                        <i class="fas fa-fire"></i>
-                    </div>
-                    <h3 class="text-2xl font-display font-bold text-stoic-dark">Quản Lý Cơn Giận</h3>
-                </div>
-
-                <div class="bg-white p-6 rounded-xl shadow-lg border border-red-100">
-                    <p class="text-sm font-serif italic mb-4 text-center text-red-800">"Cơn giận là cơn điên ngắn hạn."</p>
-                    
-                    <div class="bg-gray-800 p-3 rounded-lg text-center mb-4 text-white shadow-inner">
-                        <h4 class="text-sm font-bold font-sans">Hành Động Ngược (Opposite Action)</h4>
-                    </div>
-
-                    <div class="space-y-2 font-sans">
-                        <div class="flex justify-between items-center text-xs font-semibold border-b border-gray-100 pb-2">
-                            <span class="text-red-600">Mặt căng cứng</span>
-                            <i class="fas fa-arrow-right text-gray-400"></i>
-                            <span class="text-green-600">Thả lỏng cơ mặt</span>
-                        </div>
-                        <div class="flex justify-between items-center text-xs font-semibold border-b border-gray-100 pb-2">
-                            <span class="text-red-600">Giọng lớn</span>
-                            <i class="fas fa-arrow-right text-gray-400"></i>
-                            <span class="text-green-600">Hạ thấp giọng</span>
-                        </div>
-                        <div class="flex justify-between items-center text-xs font-semibold">
-                            <span class="text-red-600">Đi nhanh</span>
-                            <i class="fas fa-arrow-right text-gray-400"></i>
-                            <span class="text-green-600">Đi thật chậm</span>
-                        </div>
-                    </div>
-                    
-                    <p class="text-xs text-gray-500 mt-4 text-center font-serif bg-gray-50 p-2 rounded">→ Ép cơ thể dịu lại, tâm trí sẽ dịu theo.</p>
+            <div class="stoic-card p-6 rounded-xl" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="font-bold text-xl mb-4 font-display"><i class="fas fa-fire text-red-500 mr-2"></i>Cơn Giận</h3>
+                <p class="text-sm font-serif text-gray-600 mb-2 italic">"Cơn giận là cơn điên ngắn hạn."</p>
+                <div class="bg-gray-50 p-3 rounded border border-gray-100 text-sm">
+                    <strong>Hành động ngược:</strong> Thả lỏng mặt, Hạ giọng, Đi chậm lại.
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 4: MODERN PERSPECTIVE -->
-    <section class="py-20 mt-10 bg-stoic-dark text-stoic-marble relative overflow-hidden">
-         <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-         
-        <div class="max-w-4xl mx-auto px-4 text-center relative z-10" data-aos="zoom-in">
-            <h2 class="text-3xl font-display font-bold text-stoic-gold mb-8">Góc Nhìn Hiện Đại: "Vá Lỗi" Tiến Hóa</h2>
-            
-            <div class="bg-gray-800 p-8 rounded-2xl shadow-2xl border border-gray-700 relative overflow-hidden text-left">
-                <div class="absolute -right-10 -top-10 text-9xl text-white opacity-5">
-                    <i class="fas fa-dna"></i>
-                </div>
-                
-                <div class="flex flex-col md:flex-row gap-8 relative z-10">
-                    <div class="md:w-1/2">
-                        <div class="flex items-center gap-2 mb-3">
-                            <i class="fas fa-bug text-red-400"></i>
-                            <h4 class="text-gray-400 font-bold uppercase text-xs tracking-wider font-sans">Lập Trình Cũ (Old Code)</h4>
-                        </div>
-                        <p class="font-serif text-sm text-gray-300 leading-relaxed">
-                            Tiến hóa lập trình ta phải <strong>Lo âu</strong> (sợ thú dữ), <strong>Tham lam</strong> (tích trữ thức ăn) và <strong>Khao khát địa vị</strong> để sống sót trên thảo nguyên cổ đại.
-                        </p>
-                    </div>
-                    
-                    <div class="hidden md:block w-px bg-gray-600"></div>
-                    
-                    <div class="md:w-1/2">
-                        <div class="flex items-center gap-2 mb-3">
-                            <i class="fas fa-tools text-stoic-gold"></i>
-                            <h4 class="text-stoic-gold font-bold uppercase text-xs tracking-wider font-sans">Bản Vá Khắc Kỷ (Stoic Patch)</h4>
-                        </div>
-                        <p class="font-serif text-sm text-gray-200 leading-relaxed">
-                            Là công cụ để <strong>"ghi đè" (override)</strong> những dòng code lỗi thời đó bằng Lý trí. Xóa bỏ lo âu không cần thiết trong thế giới hiện đại an toàn.
-                        </p>
-                    </div>
-                </div>
+    <div class="section-divider"></div>
+
+    <!-- SECTION 4: EPICURUS -->
+    <section class="max-w-7xl mx-auto px-4 py-12 mb-12">
+        <div class="flex items-center gap-4 mb-12" data-aos="fade-right">
+             <span class="text-6xl font-bold text-gray-200 font-display absolute -z-10 transform -translate-x-4 -translate-y-4">04</span>
+            <span class="text-4xl font-bold text-stoic-epicurus font-display relative z-10">IV.</span>
+            <h2 class="text-3xl md:text-4xl font-display text-stoic-dark font-bold">Kỳ Phùng Địch Thủ: Epicurus</h2>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-0 border border-gray-200 rounded-2xl overflow-hidden shadow-lg mb-16">
+            <!-- Stoic Side -->
+            <div class="bg-stoic-dark p-8 text-stoic-marble">
+                <h3 class="text-2xl font-bold text-stoic-gold font-display mb-1">KHẮC KỶ</h3>
+                <p class="text-xs uppercase tracking-widest text-gray-400 mb-6">Chiến Binh Đạo Đức</p>
+                <ul class="space-y-4 text-sm font-sans">
+                    <li><strong class="text-stoic-gold">Mục tiêu:</strong> ĐỨC HẠNH.</li>
+                    <li><strong class="text-stoic-gold">Đau khổ:</strong> CHỊU ĐỰNG.</li>
+                </ul>
+            </div>
+            <!-- Epicurus Side -->
+            <div class="bg-stoic-epicurus p-8 text-white">
+                <h3 class="text-2xl font-bold text-white font-display mb-1">EPICURUS</h3>
+                <p class="text-xs uppercase tracking-widest text-teal-200 mb-6">Du Khách Ẩn Dật</p>
+                <ul class="space-y-4 text-sm font-sans">
+                    <li><strong class="text-teal-200">Mục tiêu:</strong> KHOÁI LẠC (Không đau).</li>
+                    <li><strong class="text-teal-200">Đau khổ:</strong> NÉ TRÁNH.</li>
+                </ul>
             </div>
         </div>
     </section>
