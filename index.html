@@ -20,4 +20,222 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Merri
+            font-family: 'Merriweather', serif; /* Font chữ có chân cho nội dung */
+            background-color: var(--bg-paper);
+            color: var(--text-brown);
+            /* Thêm một lớp vân giấy nhẹ (tùy chọn) */
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+            line-height: 1.6;
+        }
+
+        /* --- LAYOUT CHÍNH --- */
+        .container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        /* --- HEADER --- */
+        header {
+            text-align: center;
+            margin-bottom: 70px;
+            position: relative;
+        }
+
+        .main-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text-brown);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            /* Hiệu ứng chữ khắc nhẹ */
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8), -1px -1px 2px rgba(93, 64, 55, 0.1);
+        }
+
+        /* Họa tiết trang trí dưới tiêu đề */
+        .divider-ornament {
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            margin: 20px 0;
+            opacity: 0.8;
+        }
+        .divider-ornament::before,
+        .divider-ornament::after {
+            content: "";
+            display: inline-block;
+            width: 80px;
+            height: 2px;
+            background-color: var(--accent-gold);
+            vertical-align: middle;
+            margin: 0 15px;
+            opacity: 0.5;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #8D6E63; /* Nâu nhạt hơn */
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- DANH SÁCH THẺ (GRID) --- */
+        .collection-grid {
+            display: grid;
+            /* Tự động chia cột, tối thiểu 350px một thẻ */
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        /* --- THIẾT KẾ THẺ (CARD) --- */
+        .lib-card {
+            display: block; /* Để thẻ a bao trùm */
+            background-color: var(--card-bg);
+            /* Viền kép tạo cảm giác cổ điển */
+            border: 3px double var(--border-sepia);
+            padding: 35px 30px;
+            text-decoration: none; /* Bỏ gạch chân link */
+            color: var(--text-brown);
+            transition: all 0.4s ease;
+            position: relative;
+            box-shadow: 5px 5px 15px rgba(93, 64, 55, 0.05);
+            overflow: hidden;
+        }
+
+        /* Hiệu ứng khi di chuột vào thẻ */
+        .lib-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-5px); /* Nổi lên nhẹ */
+            box-shadow: 8px 8px 25px rgba(192, 160, 98, 0.2); /* Đổ bóng vàng ấm */
+            background-color: #fffef9; /* Sáng lên một chút */
+        }
+
+        /* Icon chính của thẻ */
+        .card-icon-box {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .card-icon {
+            font-size: 3.5rem;
+            color: var(--accent-gold);
+            /* Thêm vòng nguyệt quế bao quanh icon */
+            border: 2px solid var(--accent-gold);
+            border-radius: 50%;
+            padding: 20px;
+            width: 80px;
+            height: 80px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bg-paper);
+            transition: all 0.4s ease;
+        }
+        .lib-card:hover .card-icon {
+            background-color: var(--accent-gold);
+            color: var(--bg-paper);
+            transform: rotateY(180deg); /* Hiệu ứng xoay icon khi hover */
+        }
+
+
+        .card-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 15px;
+            color: var(--text-brown);
+        }
+
+        .card-desc {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #6D4C41;
+            margin-bottom: 30px;
+        }
+
+        /* Nút "Đọc tiếp" giả */
+        .read-more-btn {
+            display: block;
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            transition: letter-spacing 0.3s ease;
+        }
+        .lib-card:hover .read-more-btn {
+            letter-spacing: 3px; /* Giãn chữ ra khi hover */
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 80px;
+            padding: 30px 0;
+            border-top: 1px solid var(--border-sepia);
+            font-size: 0.9rem;
+            color: #8D6E63;
+        }
+        footer i { color: var(--accent-gold); }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1 class="main-title">Bibliotheca Philosophica</h1>
+            <div class="divider-ornament">
+                <i class="fa-solid fa-book-open"></i>
+            </div>
+            <p class="subtitle">Tuyển tập các ghi chép trực quan về triết học và tư duy cổ điển.</p>
+        </header>
+
+        <div class="collection-grid">
+
+            <a href="stoicism.html" class="lib-card">
+                <div class="card-icon-box">
+                    <i class="card-icon fa-solid fa-landmark-dome"></i>
+                </div>
+                <h2 class="card-title">Chủ Nghĩa Khắc Kỷ</h2>
+                <p class="card-desc">
+                    Hành trình tìm kiếm sự bình thản trong tâm hồn. Nghệ thuật sống của các triết gia La Mã cổ đại.
+                </p>
+                <span class="read-more-btn">Xem Nội Dung</span>
+            </a>
+
+            <a href="#" class="lib-card">
+                <div class="card-icon-box">
+                    <i class="card-icon fa-solid fa-scroll"></i>
+                </div>
+                <h2 class="card-title">Ghi Chép Tư Duy</h2>
+                <p class="card-desc">
+                    Các mô hình tư duy và phương pháp lập luận logic được hệ thống hóa dưới dạng sơ đồ.
+                </p>
+                <span class="read-more-btn">Xem Nội Dung</span>
+            </a>
+
+             <a href="#" class="lib-card">
+                <div class="card-icon-box">
+                    <i class="card-icon fa-regular fa-compass"></i>
+                </div>
+                <h2 class="card-title">Định Hướng Cuộc Sống</h2>
+                <p class="card-desc">
+                    Những bài học về mục đích sống và cách đối mặt với nghịch cảnh.
+                </p>
+                <span class="read-more-btn">Xem Nội Dung</span>
+            </a>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>Được lưu trữ tại Thư viện số GitHub <i class="fa-solid fa-feather-pointed"></i></p>
+    </footer>
+
+</body>
+</html>
