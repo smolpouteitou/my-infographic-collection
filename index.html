@@ -3,301 +3,330 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cẩm Nang Triết Học Của Banh | Bibliotheca Philosophica</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <title>Philosophy: East & West (Neo-Classic)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Proza+Libre:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        paper: '#f0ece2',       /* Màu giấy mỹ thuật */
+                        ink: '#1a1918',         /* Màu mực in đậm */
+                        charcoal: '#363636',    /* Màu than chì */
+                        gold: '#a4895c',        /* Vàng đồng cổ (Antique Gold) */
+                        maroon: '#742a2a',      /* Đỏ đô (Đông) */
+                        navy: '#1e3a5f',        /* Xanh navy cổ (Tây) */
+                    },
+                    fontFamily: {
+                        display: ['"Cormorant Garamond"', 'serif'], /* Font tiêu đề cực sang */
+                        body: ['"Proza Libre"', 'sans-serif'],      /* Font nội dung hiện đại, dễ đọc */
+                    },
+                    backgroundImage: {
+                        'texture': "url('https://www.transparenttextures.com/patterns/cream-paper.png')",
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        /* --- CẤU HÌNH MÀU SẮC (THEME CỔ KÍNH) --- */
-        :root {
-            --bg-paper: #F2F0E9;       /* Màu giấy cũ */
-            --text-primary: #3E2723;   /* Nâu đen (Mực tàu) */
-            --text-secondary: #5D4037; /* Nâu đất */
-            --accent-gold: #Bca136;    /* Vàng đồng cổ */
-            --border-color: #D7CCC8;
-            --card-bg: #FCFAF2;
-        }
-
         body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Merriweather', serif;
-            background-color: var(--bg-paper);
-            color: var(--text-primary);
-            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png'); /* Vân giấy */
-            line-height: 1.7;
+            background-color: #f0ece2;
+            color: #1a1918;
+            background-image: url("https://www.transparenttextures.com/patterns/cream-paper.png");
+            overflow-x: hidden;
         }
 
-        /* --- LAYOUT --- */
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* --- HEADER --- */
-        header {
-            text-align: center;
-            padding: 80px 0 50px;
-            border-bottom: 2px solid var(--accent-gold);
-            margin-bottom: 60px;
+        /* Hiệu ứng nổi 3D nhẹ nhàng (Soft Skeuomorphism) */
+        .card-classic {
+            background: #f7f5ef;
+            border: 1px solid rgba(164, 137, 92, 0.2);
+            box-shadow: 
+                0 4px 6px -1px rgba(0, 0, 0, 0.05),
+                0 2px 4px -1px rgba(0, 0, 0, 0.03),
+                inset 0 0 40px rgba(255, 255, 255, 0.5); /* Inner glow */
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
+            overflow: hidden;
         }
 
-        /* Trang trí góc header */
-        header::after {
-            content: "♦";
+        .card-classic::before {
+            content: '';
             position: absolute;
-            bottom: -14px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: var(--bg-paper);
-            padding: 0 15px;
-            color: var(--accent-gold);
-            font-size: 20px;
+            top: 0; left: 0; w: 100%; h: 4px;
+            background: #a4895c;
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+            transform-origin: left;
+            width: 100%;
         }
 
-        .site-title {
-            font-family: 'Cinzel', serif;
-            font-size: 3.5rem;
-            color: var(--text-primary);
-            margin: 0;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+        .card-classic:hover {
+            transform: translateY(-8px);
+            box-shadow: 
+                0 20px 25px -5px rgba(0, 0, 0, 0.1),
+                0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #a4895c;
         }
 
-        .site-subtitle {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            font-style: italic;
-            color: var(--accent-gold);
-            margin-top: 15px;
+        .card-classic:hover::before {
+            transform: scaleX(1);
         }
 
-        /* --- PHẦN GIỚI THIỆU CHUNG (INTRO) --- */
-        .intro-section {
-            text-align: center;
-            margin-bottom: 80px;
-            padding: 0 50px;
-        }
-        .intro-text {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            max-width: 800px;
-            margin: 0 auto;
-        }
+        /* Chữ cái đầu dòng (Drop Cap) */
         .drop-cap {
             float: left;
-            font-size: 3.5rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
             line-height: 0.8;
-            padding-right: 10px;
-            padding-top: 5px;
-            font-family: 'Cinzel', serif;
-            color: var(--accent-gold);
+            font-weight: 700;
+            color: #a4895c;
+            padding-right: 0.5rem;
+            padding-top: 0.2rem;
         }
 
-        /* --- TIÊU ĐỀ PHÂN MỤC (SECTION TITLE) --- */
-        .section-heading {
-            text-align: center;
-            margin-bottom: 50px;
-            position: relative;
-        }
-        .section-heading h2 {
-            font-family: 'Cinzel', serif;
-            font-size: 2rem;
-            color: var(--text-primary);
-            display: inline-block;
-            background: var(--bg-paper);
-            padding: 0 20px;
-            z-index: 1;
-            position: relative;
-        }
-        .section-heading::before {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 10%;
-            right: 10%;
-            height: 1px;
-            background: var(--border-color);
-            z-index: 0;
-        }
-
-        /* --- GRID HỆ THỐNG THẺ --- */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-            margin-bottom: 100px;
-        }
-
-        /* --- CARD STYLE --- */
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 30px;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.4s ease;
-            position: relative;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.03);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 10px 10px 30px rgba(62, 39, 35, 0.1);
-            border-color: var(--accent-gold);
-        }
-
-        .card-tag {
-            font-family: 'Cinzel', serif;
-            font-size: 0.75rem;
-            color: var(--bg-paper);
-            background-color: var(--text-secondary);
-            padding: 4px 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            align-self: flex-start;
-            margin-bottom: 15px;
-            border-radius: 2px;
-        }
-        
-        /* Màu tag khác nhau cho sinh động */
-        .tag-west { background-color: #5D4037; } /* Phương Tây - Nâu */
-        .tag-east { background-color: #607D8B; } /* Phương Đông - Xanh đá */
-        .tag-tool { background-color: #C0A062; } /* Công cụ - Vàng */
-
-        .card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            margin: 10px 0;
-            color: var(--text-primary);
-        }
-
-        .card p {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            flex-grow: 1; /* Đẩy nút xuống đáy */
-            margin-bottom: 25px;
-        }
-
-        .card-footer {
-            border-top: 1px solid rgba(0,0,0,0.05);
-            padding-top: 15px;
-            font-style: italic;
-            font-size: 0.85rem;
-            color: var(--accent-gold);
+        /* Đường kẻ trang trí */
+        .ornament-line {
             display: flex;
             align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            opacity: 0.5;
+            margin: 2rem 0;
         }
-        
-        .card-footer i { margin-right: 8px; }
+        .ornament-line::before, .ornament-line::after {
+            content: '';
+            height: 1px;
+            width: 50px;
+            background-color: #a4895c;
+        }
 
-        /* --- FOOTER --- */
-        footer {
-            text-align: center;
-            padding: 50px 0;
-            border-top: 2px solid var(--accent-gold);
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+        /* Parallax Background Text */
+        .bg-text {
+            position: absolute;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 15rem;
+            opacity: 0.03;
+            font-weight: bold;
+            pointer-events: none;
+            z-index: 0;
+            white-space: nowrap;
         }
     </style>
 </head>
-<body>
+<body class="antialiased">
 
-    <div class="container">
-        <header>
-            <h1 class="site-title">Bibliotheca Philosophica</h1>
-            <p class="site-subtitle">Cẩm Nang Triết Học Toàn Thư Của Banh</p>
-        </header>
+    <!-- Decorative Background Text -->
+    <div class="bg-text top-20 -left-20 rotate-12">Wisdom</div>
+    <div class="bg-text bottom-40 -right-20 -rotate-12">Truth</div>
 
-        <section class="intro-section">
-            <p class="intro-text">
-                <span class="drop-cap">T</span>riết học (Philosophy) bắt nguồn từ tiếng Hy Lạp cổ đại: "Philos" (Tình yêu) và "Sophia" (Sự thông thái). Đây là hành trình của nhân loại đi tìm câu trả lời cho những vấn đề nền tảng nhất: Bản chất của thế giới là gì? Con người sống để làm gì? Và làm thế nào để tư duy đúng đắn?
-                <br><br>
-                Trang web này là nơi tôi (Banh) lưu trữ, hệ thống hóa và trực quan hóa những tư tưởng vĩ đại của nhân loại qua các infographic và tài liệu nghiên cứu.
+    <!-- HERO SECTION -->
+    <header class="min-h-screen flex flex-col items-center justify-center relative z-10 px-6">
+        <!-- Border Frame -->
+        <div class="absolute inset-4 border border-gold/30 pointer-events-none m-4 md:m-8"></div>
+        <div class="absolute inset-5 border border-gold/10 pointer-events-none m-4 md:m-8"></div>
+
+        <div class="text-center max-w-4xl" data-aos="fade-up" data-aos-duration="1500">
+            <div class="ornament-line text-gold">
+                <i class="fas fa-crown text-xl"></i>
+            </div>
+            
+            <p class="font-body text-sm tracking-[0.4em] uppercase text-charcoal mb-6">Đại Cương Triết Học</p>
+            
+            <h1 class="text-7xl md:text-9xl font-display font-bold text-ink leading-none mb-4">
+                <span class="relative inline-block hover:text-navy transition duration-500 cursor-default">ĐÔNG</span>
+                <span class="text-gold text-5xl md:text-7xl font-light align-middle px-4">&</span>
+                <span class="relative inline-block hover:text-maroon transition duration-500 cursor-default">TÂY</span>
+            </h1>
+
+            <p class="text-2xl md:text-3xl font-display text-charcoal italic mt-8 max-w-2xl mx-auto leading-relaxed">
+                "Cuộc đối thoại vĩnh cửu giữa <span class="text-navy font-semibold border-b border-navy/30">Logic</span> và <span class="text-maroon font-semibold border-b border-maroon/30">Trực Giác</span>"
             </p>
-        </section>
 
-        <div class="section-heading">
-            <h2>Triết Học Phương Tây</h2>
+            <div class="mt-12 flex justify-center">
+                <div class="w-px h-24 bg-gradient-to-b from-gold to-transparent"></div>
+            </div>
         </div>
-        
-        <div class="grid">
-            <a href="stoicism.html" class="card">
-                <span class="card-tag tag-west">Hy Lạp - La Mã</span>
-                <h3>Chủ Nghĩa Khắc Kỷ</h3>
-                <p>Stoicism - Nghệ thuật rèn luyện sự bình thản trước nghịch cảnh. Tập trung vào những gì ta có thể kiểm soát và chấp nhận những gì không thể.</p>
-                <div class="card-footer"><i class="fa-solid fa-scroll"></i> Đã có infographic</div>
-            </a>
+    </header>
 
-            <a href="#" class="card">
-                <span class="card-tag tag-west">Hiện Đại</span>
-                <h3>Chủ Nghĩa Hiện Sinh</h3>
-                <p>Existentialism. Sartre & Camus. "Sự tồn tại đi trước bản chất". Con người bị ném vào thế giới và phải tự tạo ra ý nghĩa cho cuộc đời mình.</p>
-                <div class="card-footer"><i class="fa-solid fa-pen-nib"></i> Đang cập nhật</div>
-            </a>
+    <!-- CORE MINDSET: The Museum Cards -->
+    <section class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex items-end justify-between mb-16 border-b border-gray-300 pb-4" data-aos="fade-right">
+                <div>
+                    <span class="text-gold font-bold tracking-widest text-xs uppercase">Chương I</span>
+                    <h2 class="text-5xl font-display font-bold text-ink mt-2">Tư Duy Cốt Lõi</h2>
+                </div>
+                <div class="hidden md:block text-right">
+                    <p class="font-body text-gray-500 italic">Hai lăng kính - Một thực tại</p>
+                </div>
+            </div>
 
-            <a href="#" class="card">
-                <span class="card-tag tag-west">Cổ Đại</span>
-                <h3>Plato & Cái Hang</h3>
-                <p>Học thuyết Ý niệm (Theory of Forms). Ngụ ngôn cái hang và bản chất của hiện thực. Nền tảng của tư duy duy lý phương Tây.</p>
-                <div class="card-footer"><i class="fa-solid fa-pen-nib"></i> Đang cập nhật</div>
-            </a>
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- CARD TÂY -->
+                <div class="card-classic p-10 md:p-14 group" data-aos="fade-up" data-aos-delay="0">
+                    <div class="flex justify-between items-start mb-8">
+                        <i class="fas fa-brain text-5xl text-navy opacity-80 group-hover:scale-110 transition duration-500"></i>
+                        <span class="font-display text-6xl text-gray-200 font-bold -mt-4 z-0 group-hover:text-navy/10 transition">WEST</span>
+                    </div>
+                    
+                    <h3 class="text-3xl font-display font-bold text-navy mb-2 relative z-10">Phương Tây</h3>
+                    <p class="text-xs font-bold tracking-widest text-gold uppercase mb-6">Logic • Phân Tích • Chinh Phục</p>
+                    
+                    <div class="space-y-6 font-body text-gray-700 relative z-10">
+                        <p><span class="drop-cap">T</span>ư duy phương Tây giống như việc dùng kính hiển vi. Họ mổ xẻ vấn đề thành từng mảnh nhỏ để hiểu rõ bản chất.</p>
+                        <div class="bg-white/50 p-4 border-l-2 border-navy">
+                            <strong class="block text-navy font-bold text-sm uppercase mb-1">Câu hỏi cốt lõi</strong>
+                            "Tại sao?" (Why) & "Cái gì?" (What). Đi tìm chân lý khách quan.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD ĐÔNG -->
+                <div class="card-classic p-10 md:p-14 group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex justify-between items-start mb-8">
+                        <i class="fas fa-water text-5xl text-maroon opacity-80 group-hover:scale-110 transition duration-500"></i>
+                        <span class="font-display text-6xl text-gray-200 font-bold -mt-4 z-0 group-hover:text-maroon/10 transition">EAST</span>
+                    </div>
+                    
+                    <h3 class="text-3xl font-display font-bold text-maroon mb-2 relative z-10">Phương Đông</h3>
+                    <p class="text-xs font-bold tracking-widest text-gold uppercase mb-6">Trực Giác • Tổng Thể • Hòa Hợp</p>
+                    
+                    <div class="space-y-6 font-body text-gray-700 relative z-10">
+                        <p><span class="drop-cap text-maroon">N</span>hìn thế giới như một dòng chảy. Họ chú trọng mối liên kết giữa các sự vật hơn là bản chất riêng biệt của chúng.</p>
+                        <div class="bg-white/50 p-4 border-l-2 border-maroon">
+                            <strong class="block text-maroon font-bold text-sm uppercase mb-1">Câu hỏi cốt lõi</strong>
+                            "Như thế nào?" (How). Đi tìm Đạo và sự cân bằng.
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="section-heading">
-            <h2>Triết Học Phương Đông</h2>
+    <!-- THE SELF: Typography Focus -->
+    <section class="py-24 bg-white relative z-10 border-t border-b border-gray-200">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <div class="ornament-line text-gold mb-10"><i class="fas fa-user-circle text-2xl"></i></div>
+            
+            <h2 class="text-5xl font-display font-bold text-ink mb-16" data-aos="zoom-in">Vị Trí Của Con Người</h2>
+
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <!-- West -->
+                <div class="text-right border-r border-gray-300 pr-8 md:pr-16" data-aos="fade-right">
+                    <h4 class="text-navy font-bold tracking-widest uppercase text-sm mb-4">Chủ Nghĩa Cá Nhân</h4>
+                    <p class="font-display text-3xl md:text-4xl text-ink font-bold leading-tight mb-6">
+                        "Tôi tư duy, nên tôi tồn tại."
+                    </p>
+                    <p class="font-body text-gray-500 italic">— René Descartes</p>
+                    <p class="mt-6 text-gray-600 font-body text-sm">
+                        Cái "Tôi" độc lập, tách biệt. Tự do cá nhân là tối thượng.
+                    </p>
+                </div>
+
+                <!-- East -->
+                <div class="text-left pl-8 md:pl-16" data-aos="fade-left">
+                    <h4 class="text-maroon font-bold tracking-widest uppercase text-sm mb-4">Chủ Nghĩa Tập Thể</h4>
+                    <p class="font-display text-3xl md:text-4xl text-ink font-bold leading-tight mb-6">
+                        "Giọt nước chỉ không cạn khi hòa vào biển cả."
+                    </p>
+                    <p class="font-body text-gray-500 italic">— Ngạn ngữ cổ</p>
+                     <p class="mt-6 text-gray-600 font-body text-sm">
+                        Cái "Ta" trong mối quan hệ. Gia đình và vũ trụ là gốc rễ.
+                    </p>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="grid">
-            <a href="#" class="card">
-                <span class="card-tag tag-east">Trung Hoa</span>
-                <h3>Đạo Gia & Vô Vi</h3>
-                <p>Lão Tử & Trang Tử. Tư tưởng "Vô vi" (Hành động nương theo tự nhiên). Sống hài hòa với Đạo, mềm mại như nước nhưng mạnh mẽ vô song.</p>
-                <div class="card-footer"><i class="fa-solid fa-yin-yang"></i> Đang cập nhật</div>
-            </a>
+    <!-- TIMELINE: Vertical Elegant -->
+    <section class="py-24 relative z-10">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <span class="text-gold font-bold tracking-widest text-xs uppercase">Chương II</span>
+                <h2 class="text-4xl font-display font-bold text-ink mt-2">Dòng Chảy Thời Gian</h2>
+            </div>
 
-            <a href="#" class="card">
-                <span class="card-tag tag-east">Ấn Độ</span>
-                <h3>Triết Học Phật Giáo</h3>
-                <p>Tứ Diệu Đế và Bát Chánh Đạo. Bản chất của Khổ (Dukkha) và con đường dẫn đến sự giải thoát (Niết bàn). Tính "Không" và thuyết Duyên khởi.</p>
-                <div class="card-footer"><i class="fa-solid fa-dharmachakra"></i> Đang cập nhật</div>
-            </a>
+            <div class="relative">
+                <!-- Vertical Line -->
+                <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-gold/50"></div>
 
-            <a href="#" class="card">
-                <span class="card-tag tag-east">Trung Hoa</span>
-                <h3>Nho Gia & Xã Hội</h3>
-                <p>Khổng Tử. Trật tự xã hội, Tam cương Ngũ thường. Tu thân, tề gia, trị quốc, bình thiên hạ. Đạo đức của người Quân tử.</p>
-                <div class="card-footer"><i class="fa-solid fa-book"></i> Đang cập nhật</div>
-            </a>
+                <!-- Item 1 -->
+                <div class="flex flex-col md:flex-row items-center justify-between mb-20 group" data-aos="fade-up">
+                    <div class="md:w-5/12 text-right pr-8 md:order-1">
+                        <h4 class="font-display text-2xl font-bold text-navy">Socrates • Plato</h4>
+                        <p class="font-body text-sm text-gray-500 mt-2">Nền móng khoa học phương Tây</p>
+                    </div>
+                    <div class="w-12 h-12 bg-paper border-2 border-gold rounded-full flex items-center justify-center font-display font-bold text-gold z-10 shadow-lg md:order-2 group-hover:bg-gold group-hover:text-white transition duration-300">I</div>
+                    <div class="md:w-5/12 text-left pl-8 md:order-3">
+                        <h4 class="font-display text-2xl font-bold text-maroon">Phật • Lão • Khổng</h4>
+                        <p class="font-body text-sm text-gray-500 mt-2">Đạo đức & Tâm linh phương Đông</p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="flex flex-col md:flex-row items-center justify-between mb-20 group" data-aos="fade-up">
+                    <div class="md:w-5/12 text-right pr-8 md:order-1">
+                        <h4 class="font-display text-2xl font-bold text-navy">Thiên Chúa Giáo</h4>
+                        <p class="font-body text-sm text-gray-500 mt-2">Kỷ nguyên của Đức tin</p>
+                    </div>
+                    <div class="w-12 h-12 bg-paper border-2 border-gold rounded-full flex items-center justify-center font-display font-bold text-gold z-10 shadow-lg md:order-2 group-hover:bg-gold group-hover:text-white transition duration-300">II</div>
+                    <div class="md:w-5/12 text-left pl-8 md:order-3">
+                        <h4 class="font-display text-2xl font-bold text-maroon">Tam Giáo Đồng Nguyên</h4>
+                        <p class="font-body text-sm text-gray-500 mt-2">Sự giao thoa Nho - Phật - Lão</p>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="flex flex-col md:flex-row items-center justify-between group" data-aos="fade-up">
+                    <div class="md:w-5/12 text-right pr-8 md:order-1">
+                        <h4 class="font-display text-2xl font-bold text-navy">Hiện Sinh & Khoa Học</h4>
+                        <p class="font-body text-sm text-gray-500 mt-2">Nietzsche, Sartre, AI</p>
+                    </div>
+                    <div class="w-12 h-12 bg-paper border-2 border-gold rounded-full flex items-center justify-center font-display font-bold text-gold z-10 shadow-lg md:order-2 group-hover:bg-gold group-hover:text-white transition duration-300">III</div>
+                    <div class="md:w-5/12 text-left pl-8 md:order-3">
+                        <h4 class="font-display text-2xl font-bold text-maroon">Thiền & Chánh Niệm</h4>
+                        <p class="font-body text-sm text-gray-500 mt-2">Ứng dụng vào đời sống hiện đại</p>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="section-heading">
-            <h2>Công Cụ Tư Duy</h2>
+    <!-- FOOTER -->
+    <footer class="bg-ink text-paper py-20 text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5 bg-[url('https://www.transparenttextures.com/patterns/wood-pattern.png')]"></div>
+        <div class="max-w-2xl mx-auto px-6 relative z-10" data-aos="zoom-in">
+            <i class="fas fa-infinity text-4xl text-gold mb-6"></i>
+            <h3 class="text-4xl font-display font-bold mb-8">Sự Kết Hợp Hoàn Hảo</h3>
+            <p class="font-display text-xl leading-relaxed text-gray-400 mb-10 italic">
+                "Người thông thái biết trang bị cho mình <br>
+                <span class="text-white not-italic border-b border-white/20 pb-1">Cái đầu lạnh của Phương Tây</span> và <span class="text-white not-italic border-b border-white/20 pb-1">Trái tim nóng của Phương Đông</span>."
+            </p>
+            <button class="px-10 py-4 border border-gold text-gold font-bold tracking-[0.2em] uppercase hover:bg-gold hover:text-ink transition duration-500">
+                Bắt đầu hành trình
+            </button>
         </div>
-
-        <div class="grid">
-             <a href="#" class="card">
-                <span class="card-tag tag-tool">Logic Học</span>
-                <h3>Các Lỗi Ngụy Biện</h3>
-                <p>Tổng hợp các Logical Fallacies thường gặp (Công kích cá nhân, Người rơm, Trượt dốc...). Vũ khí để bảo vệ tư duy sắc bén.</p>
-                <div class="card-footer"><i class="fa-solid fa-brain"></i> Đang cập nhật</div>
-            </a>
-        </div>
-
-    </div>
-
-    <footer>
-        <p>
-            <i class="fa-solid fa-feather-pointed" style="color: var(--accent-gold); margin-bottom: 10px; font-size: 1.5rem;"></i><br>
-            Biên soạn và Lưu trữ bởi <strong>Banh</strong>.<br>
-            © 2026 Bibliotheca Philosophica.
-        </p>
     </footer>
 
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            offset: 100,
+            duration: 1000,
+            easing: 'ease-out-cubic'
+        });
+    </script>
 </body>
 </html>
