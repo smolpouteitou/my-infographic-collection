@@ -8,15 +8,13 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts: Merriweather, Playfair Display, Lora (Đảm bảo hỗ trợ Tiếng Việt) -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
     
-    <!-- FontAwesome -->
+    <!-- Icons & AOS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <script>
@@ -24,23 +22,13 @@
             theme: {
                 extend: {
                     colors: {
-                        philo: {
-                            paper: '#fdfbf7',     /* Màu giấy cũ sáng */
-                            parchment: '#f3e5d0', /* Màu giấy da đậm hơn chút */
-                            ink: '#1a1a1a',       /* Màu mực đen than */
-                            gold: '#b8860b',      /* Vàng đồng đậm (Dark Goldenrod) */
-                            gold_light: '#d4af37',
-                            brown: '#5d4037',     /* Nâu đất */
-                            accent: '#800000'     /* Đỏ đô (Maroon) */
-                        }
+                        dark: { bg: '#050505', surface: '#0f0f0f', border: '#262626' },
+                        gold: { DEFAULT: '#C5A059', light: '#E5Cca0', dim: '#6b5628' },
+                        text: { main: '#e5e5e5', muted: '#9ca3af' }
                     },
                     fontFamily: {
-                        heading: ['"Merriweather"', 'serif'],  /* Thay Cinzel bằng Merriweather */
-                        display: ['"Playfair Display"', 'serif'], /* Dùng cho tên to */
-                        body: ['"Lora"', 'serif'],             /* Dùng cho nội dung */
-                    },
-                    backgroundImage: {
-                        'paper-texture': "url('https://www.transparenttextures.com/patterns/cream-paper.png')",
+                        display: ['"Playfair Display"', 'serif'],
+                        sans: ['"Manrope"', 'sans-serif'],
                     }
                 }
             }
@@ -48,430 +36,323 @@
     </script>
     
     <style>
-        body {
-            background-color: #fdfbf7;
-            color: #1a1a1a;
-            font-family: 'Lora', serif; /* Default font */
-        }
+        body { background-color: #050505; color: #e5e5e5; font-family: 'Manrope', sans-serif; overflow-x: hidden; }
+        ::-webkit-scrollbar { width: 8px; background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        html { scroll-behavior: smooth; }
         
-        /* Hiệu ứng drop cap an toàn */
-        .drop-cap::first-letter {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            float: left;
-            line-height: 0.8;
-            margin-right: 0.5rem;
-            color: #b8860b;
-            font-weight: 700;
+        /* Hiệu ứng Glassmorphism */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
         }
+        .glass-card:hover { border-color: #C5A059; background: rgba(255, 255, 255, 0.05); transform: translateY(-3px); }
 
-        .section-separator {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 4rem 0;
-            opacity: 0.5;
-        }
-        .section-separator::before, .section-separator::after {
-            content: "";
-            height: 1px;
-            background: #b8860b;
-            flex-grow: 1;
-            max-width: 150px;
-        }
-        .section-separator i {
-            margin: 0 1rem;
-            color: #b8860b;
-            font-size: 1.2rem;
-        }
-
-        /* Card styles */
-        .classic-card {
-            background-color: #fff;
-            border: 1px solid #e0e0e0;
-            position: relative;
-            transition: all 0.3s ease-out;
-            border-radius: 2px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
+        /* Masking cho ảnh nền */
+        .hero-mask { mask-image: linear-gradient(to bottom, black 30%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 100%); }
         
-        .classic-card::before {
-            content: '';
-            position: absolute;
-            top: 3px; left: 3px; right: 3px; bottom: 3px;
-            border: 1px solid rgba(184, 134, 11, 0.2);
-            pointer-events: none;
-        }
-
-        .classic-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            border-color: #b8860b;
-        }
-
-        /* Timeline styling */
-        .timeline-line {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 100%;
-            background: #d4af37;
-            opacity: 0.3;
-        }
-
-        /* Custom scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #fdfbf7; }
-        ::-webkit-scrollbar-thumb { background: #b8860b; border-radius: 4px; }
+        /* Timeline line */
+        .timeline-line { position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, transparent, #C5A059, transparent); }
+        @media (min-width: 768px) { .timeline-line { left: 50%; } }
     </style>
 </head>
-<body class="bg-philo-paper bg-paper-texture overflow-x-hidden antialiased">
+<body class="antialiased selection:bg-gold selection:text-black">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-philo-paper/95 backdrop-blur-md border-b border-philo-gold/20 py-4 transition-all duration-300 shadow-sm" id="navbar">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <i class="fas fa-university text-philo-gold text-xl"></i>
-                <span class="font-heading font-black text-lg tracking-wider text-philo-ink uppercase">Triết Học</span>
-            </div>
-            <div class="hidden md:flex space-x-8 font-heading font-bold text-xs tracking-widest text-philo-brown uppercase">
-                <a href="#essence" class="hover:text-philo-gold transition">Bản chất</a>
-                <a href="#history" class="hover:text-philo-gold transition">Lịch sử</a>
-                <a href="#branches" class="hover:text-philo-gold transition">Phân nhánh</a>
-                <a href="#experiments" class="hover:text-philo-gold transition">Thí nghiệm</a>
-            </div>
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 top-0 py-4 px-6 flex justify-between items-center backdrop-blur-xl bg-dark-bg/80 border-b border-white/5 transition-all duration-300">
+        <div class="font-display font-bold text-lg tracking-widest text-white uppercase border border-white/20 px-3 py-1">
+            Triết<span class="text-gold">Học</span>
         </div>
+        <div class="hidden xl:flex gap-6 text-[11px] uppercase tracking-[0.2em] font-bold text-gray-500">
+            <a href="#intro" class="hover:text-gold transition-colors">Tổng quan</a>
+            <a href="#history" class="hover:text-gold transition-colors">Lịch sử</a>
+            <a href="#stoic" class="hover:text-gold transition-colors text-white">Khắc Kỷ</a>
+            <a href="#east-west" class="hover:text-gold transition-colors">Đông Tây</a>
+            <a href="#branches" class="hover:text-gold transition-colors">Phân nhánh</a>
+            <a href="#tools" class="hover:text-gold transition-colors">Công cụ</a>
+        </div>
+        <a href="#stoic" class="bg-white text-black px-4 py-2 text-[10px] font-bold uppercase tracking-widest hover:bg-gold transition-colors">Bắt đầu</a>
     </nav>
 
     <!-- Hero Section -->
-    <header class="relative min-h-screen flex items-center justify-center text-center px-4 overflow-hidden pt-16 bg-[#f7f5f0]">
-        <!-- Decorative Background -->
-        <div class="absolute inset-0 z-0 opacity-10 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/notebook.png')]"></div>
-        
-        <div class="relative z-10 max-w-4xl mx-auto" data-aos="fade-up" data-aos-duration="1200">
-            <div class="mb-6 inline-block border-b-2 border-philo-gold pb-1">
-                <span class="font-heading font-bold text-philo-gold tracking-[0.2em] text-sm uppercase">Kho tàng tư tưởng nhân loại</span>
+    <header id="intro" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
+        <!-- Background: The School of Athens -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Raphael_School_of_Athens.jpg/1920px-Raphael_School_of_Athens.jpg" 
+                 class="w-full h-full object-cover opacity-25 grayscale hero-mask" 
+                 alt="The School of Athens"> 
+            <div class="absolute inset-0 bg-gradient-to-t from-dark-bg via-dark-bg/40 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-4 max-w-5xl mx-auto mt-10" data-aos="zoom-out" data-aos-duration="1500">
+            <div class="inline-block border-b border-gold mb-6 pb-1">
+                <span class="text-gold text-xs tracking-[0.4em] uppercase font-bold">Kho tàng tư tưởng nhân loại</span>
             </div>
-            <h1 class="text-5xl md:text-7xl font-display font-bold text-philo-ink mb-6 leading-tight">
-                ĐẠI CƯƠNG<br><span class="text-philo-gold italic">TRIẾT HỌC</span>
+            <h1 class="text-5xl md:text-8xl font-display font-bold text-white mb-6 leading-tight tracking-tight shadow-2xl">
+                ĐẠI CƯƠNG <span class="text-transparent bg-clip-text bg-gradient-to-br from-white to-gray-500">TRIẾT HỌC</span>
             </h1>
-            <div class="w-24 h-1 bg-philo-ink mx-auto mb-8"></div>
-            <p class="font-display text-2xl md:text-3xl text-philo-brown italic mb-8 max-w-2xl mx-auto leading-relaxed">
+            <p class="font-display text-xl md:text-2xl text-gray-300 italic font-light mb-4 max-w-2xl mx-auto">
                 "Cuộc đời không được suy tưởng là cuộc đời không đáng sống."
             </p>
-            <p class="font-heading font-bold text-sm text-gray-500 uppercase tracking-widest">— Socrates —</p>
+            <p class="text-xs text-gold uppercase tracking-widest mb-12">— Socrates —</p>
             
-            <div class="mt-12 animate-bounce">
-                <a href="#essence" class="text-philo-gold text-2xl"><i class="fas fa-chevron-down"></i></a>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <!-- CTA 1 -->
+                <a href="stoic.html" class="group relative px-8 py-3 border border-white/20 hover:border-gold transition-all duration-300 min-w-[200px]">
+                    <div class="absolute inset-0 bg-gold/5 w-0 group-hover:w-full transition-all duration-300"></div>
+                    <span class="relative flex items-center justify-center gap-2 text-white font-bold uppercase tracking-widest text-xs">
+                        <i class="fas fa-stone mr-1"></i> Khắc Kỷ
+                    </span>
+                </a>
+                <!-- CTA 2 -->
+                <a href="east-west.html" class="group relative px-8 py-3 bg-white text-black hover:bg-gray-200 transition-all duration-300 min-w-[200px]">
+                    <span class="relative flex items-center justify-center gap-2 font-bold uppercase tracking-widest text-xs">
+                        Đông Tây <i class="fas fa-arrow-right ml-1"></i>
+                    </span>
+                </a>
             </div>
         </div>
     </header>
 
-    <!-- 1. The Essence (Tổng quan) -->
-    <section id="essence" class="py-20 max-w-6xl mx-auto px-6">
-        <div class="section-separator" data-aos="fade-in"><i class="fas fa-feather-alt"></i></div>
-        
-        <div class="text-center mb-16" data-aos="fade-up">
-            <h2 class="text-3xl md:text-4xl font-heading font-bold text-philo-ink mb-3">Tổng Quan & Định Nghĩa</h2>
-            <p class="font-body italic text-philo-brown text-lg">Bản chất của sự thông thái</p>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div class="classic-card p-10 bg-[#fffdf5]" data-aos="fade-right">
-                <h3 class="text-2xl font-display font-bold text-philo-gold mb-4 border-b border-gray-200 pb-2">Philo-sophia</h3>
-                <p class="font-body text-gray-700 leading-loose drop-cap mb-0">
-                    Xuất phát từ tiếng Hy Lạp, thuật ngữ này có nghĩa là "Tình yêu đối với sự thông thái". Triết học không chỉ là sách vở, nó là việc nghiên cứu những vấn đề chung nhất và cơ bản nhất của thế giới, về con người và vị trí của con người trong vũ trụ bao la này.
-                </p>
-            </div>
-            
-            <div class="space-y-6" data-aos="fade-left">
-                <div class="bg-philo-ink text-philo-paper p-8 rounded-sm shadow-xl relative overflow-hidden">
-                    <div class="absolute top-0 right-0 p-4 opacity-10 text-6xl text-white"><i class="fas fa-question"></i></div>
-                    <h4 class="font-heading font-bold text-philo-gold_light text-xl mb-3 uppercase tracking-wider">Vấn đề cơ bản</h4>
-                    <p class="font-body text-gray-300 italic mb-4 text-lg">"Mối quan hệ giữa Vật chất và Ý thức"</p>
-                    <div class="h-px bg-gray-700 w-full mb-4"></div>
-                    <p class="text-sm text-gray-400">Cái nào có trước? Cái nào quyết định cái nào?</p>
+    <!-- 1. The Essence (Tổng quan - Nội dung gốc) -->
+    <section class="py-24 bg-dark-bg border-b border-white/5">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div data-aos="fade-right">
+                <h2 class="text-4xl font-display font-bold text-white mb-6">Bản Chất & Định Nghĩa</h2>
+                <div class="space-y-6">
+                    <div class="glass-card p-6">
+                        <h3 class="text-gold font-bold uppercase text-xs tracking-widest mb-2">Philo-sophia</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            Xuất phát từ tiếng Hy Lạp, nghĩa là <strong class="text-white">"Tình yêu đối với sự thông thái"</strong>. Nghiên cứu những vấn đề chung nhất của thế giới và vị trí con người trong đó.
+                        </p>
+                    </div>
                 </div>
-
+            </div>
+            <div class="glass-card p-8 bg-gradient-to-br from-white/5 to-transparent" data-aos="fade-left">
+                <h3 class="text-xl font-display font-bold text-white mb-4 flex items-center gap-3">
+                    <i class="fas fa-balance-scale text-gold"></i> Vấn đề cơ bản
+                </h3>
+                <p class="text-sm text-gray-400 mb-6 italic">"Mối quan hệ giữa Vật chất và Ý thức"</p>
                 <div class="grid grid-cols-2 gap-4">
-                    <div class="border border-philo-gold/40 bg-white p-5 text-center hover:bg-philo-gold/5 transition group">
-                        <i class="fas fa-cube text-3xl text-philo-brown mb-3 group-hover:scale-110 transition"></i>
-                        <h5 class="font-heading font-bold text-base text-philo-ink">Duy Vật</h5>
-                        <p class="text-xs font-body italic mt-1 text-gray-500">Vật chất quyết định</p>
+                    <div class="p-4 border border-white/10 text-center">
+                        <i class="fas fa-cube text-2xl text-gray-500 mb-2"></i>
+                        <h4 class="text-white font-bold text-sm">Duy Vật</h4>
+                        <p class="text-[10px] text-gray-500 mt-1 uppercase">Vật chất quyết định</p>
                     </div>
-                    <div class="border border-philo-gold/40 bg-white p-5 text-center hover:bg-philo-gold/5 transition group">
-                        <i class="fas fa-lightbulb text-3xl text-philo-brown mb-3 group-hover:scale-110 transition"></i>
-                        <h5 class="font-heading font-bold text-base text-philo-ink">Duy Tâm</h5>
-                        <p class="text-xs font-body italic mt-1 text-gray-500">Ý thức quyết định</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 2. The Timeline (Lịch sử) -->
-    <section id="history" class="py-20 bg-philo-parchment/40 relative">
-        <div class="max-w-5xl mx-auto px-6">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-heading font-bold text-philo-ink mb-3">Dòng Chảy Lịch Sử</h2>
-                <p class="font-body italic text-philo-brown text-lg">Hành trình của tư duy nhân loại</p>
-            </div>
-
-            <div class="relative py-4">
-                <!-- Vertical Line -->
-                <div class="hidden md:block timeline-line bg-philo-gold opacity-40"></div>
-
-                <!-- Timeline Items -->
-                <div class="space-y-16">
-                    
-                    <!-- Item 1 -->
-                    <div class="flex flex-col md:flex-row items-center justify-between group" data-aos="fade-up">
-                        <div class="md:w-5/12 text-right pr-10 order-2 md:order-1">
-                            <h3 class="font-display font-bold text-2xl text-philo-gold mb-1">Cổ Đại</h3>
-                            <p class="font-body text-sm text-gray-600 italic mb-2">Đi tìm "bản nguyên" vũ trụ</p>
-                            <span class="inline-block bg-white border border-gray-300 px-3 py-1 text-xs font-bold text-gray-700 rounded-sm">Socrates, Plato, Aristotle</span>
-                        </div>
-                        <div class="w-4 h-4 bg-philo-ink border-4 border-philo-paper rounded-full z-10 shadow-lg order-1 md:order-2 mb-4 md:mb-0 ring-4 ring-philo-gold/20"></div>
-                        <div class="md:w-5/12 pl-10 order-3">
-                            <p class="text-gray-600 text-sm leading-relaxed">Thời kỳ khai sáng, đặt nền móng cho logic, đạo đức và khoa học tự nhiên.</p>
-                        </div>
-                    </div>
-
-                    <!-- Item 2 -->
-                    <div class="flex flex-col md:flex-row items-center justify-between group" data-aos="fade-up">
-                        <div class="md:w-5/12 text-right pr-10 order-2 md:order-1 md:text-left md:pr-0 md:pl-10 md:order-3">
-                            <h3 class="font-display font-bold text-2xl text-philo-gold mb-1">Trung Cổ</h3>
-                            <p class="font-body text-sm text-gray-600 italic mb-2">Đức tin & Thần học</p>
-                            <span class="inline-block bg-white border border-gray-300 px-3 py-1 text-xs font-bold text-gray-700 rounded-sm">Augustine, Aquinas</span>
-                        </div>
-                        <div class="w-4 h-4 bg-philo-brown border-4 border-philo-paper rounded-full z-10 shadow-lg order-1 md:order-2 mb-4 md:mb-0 ring-4 ring-philo-brown/20"></div>
-                        <div class="md:w-5/12 pl-10 order-3 md:order-1 md:pl-0 md:text-right md:pr-10">
-                            <p class="text-gray-600 text-sm leading-relaxed">Triết học trở thành "nô tỳ" của thần học, nỗ lực dung hòa giữa đức tin tôn giáo và lý trí.</p>
-                        </div>
-                    </div>
-
-                    <!-- Item 3 -->
-                    <div class="flex flex-col md:flex-row items-center justify-between group" data-aos="fade-up">
-                        <div class="md:w-5/12 text-right pr-10 order-2 md:order-1">
-                            <h3 class="font-display font-bold text-2xl text-philo-gold mb-1">Cận Đại</h3>
-                            <p class="font-body text-sm text-gray-600 italic mb-2">Ánh sáng của Lý tính</p>
-                            <span class="inline-block bg-white border border-gray-300 px-3 py-1 text-xs font-bold text-gray-700 rounded-sm">Descartes, Kant, Hegel</span>
-                        </div>
-                        <div class="w-4 h-4 bg-philo-accent border-4 border-philo-paper rounded-full z-10 shadow-lg order-1 md:order-2 mb-4 md:mb-0 ring-4 ring-philo-accent/20"></div>
-                        <div class="md:w-5/12 pl-10 order-3">
-                            <p class="text-gray-600 text-sm leading-relaxed">Con người trở thành trung tâm. Khoa học phát triển mạnh mẽ. "Tôi tư duy, nên tôi tồn tại".</p>
-                        </div>
-                    </div>
-
-                     <!-- Item 4 -->
-                     <div class="flex flex-col md:flex-row items-center justify-between group" data-aos="fade-up">
-                        <div class="md:w-5/12 text-right pr-10 order-2 md:order-1 md:text-left md:pr-0 md:pl-10 md:order-3">
-                            <h3 class="font-display font-bold text-2xl text-philo-gold mb-1">Đương Đại</h3>
-                            <p class="font-body text-sm text-gray-600 italic mb-2">Hiện sinh & Ngôn ngữ</p>
-                            <span class="inline-block bg-white border border-gray-300 px-3 py-1 text-xs font-bold text-gray-700 rounded-sm">Nietzsche, Sartre</span>
-                        </div>
-                        <div class="w-4 h-4 bg-gray-800 border-4 border-philo-paper rounded-full z-10 shadow-lg order-1 md:order-2 mb-4 md:mb-0 ring-4 ring-gray-800/20"></div>
-                        <div class="md:w-5/12 pl-10 order-3 md:order-1 md:pl-0 md:text-right md:pr-10">
-                            <p class="text-gray-600 text-sm leading-relaxed">Tập trung vào sự tồn tại của con người, tự do, cấu trúc xã hội và giới hạn của ngôn ngữ.</p>
-                        </div>
+                    <div class="p-4 border border-white/10 text-center">
+                        <i class="fas fa-lightbulb text-2xl text-gold mb-2"></i>
+                        <h4 class="text-white font-bold text-sm">Duy Tâm</h4>
+                        <p class="text-[10px] text-gray-500 mt-1 uppercase">Ý thức quyết định</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 3. East vs West (Bản đồ) -->
-    <section class="py-20 max-w-7xl mx-auto px-6">
-        <div class="section-separator" data-aos="fade-in"><i class="fas fa-globe-americas"></i></div>
-        
-        <div class="text-center mb-16" data-aos="fade-up">
-            <h2 class="text-3xl md:text-4xl font-heading font-bold text-philo-ink mb-3">Bản Đồ Tư Tưởng</h2>
-            <p class="font-body italic text-philo-brown text-lg">Đông phương & Tây phương</p>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-8">
-            <!-- West -->
-            <div class="bg-white p-8 border-t-4 border-philo-ink shadow-lg group hover:-translate-y-2 transition duration-300">
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-philo-ink text-2xl">
-                        <i class="fas fa-columns"></i>
-                    </div>
-                    <h3 class="font-heading font-bold text-2xl text-philo-ink">Phương Tây</h3>
-                </div>
-                <ul class="space-y-4 font-body text-gray-700">
-                    <li class="flex items-start"><i class="fas fa-check text-philo-gold mt-1 mr-3"></i> <span><strong>Trọng tâm:</strong> Cá nhân, Lý tính, Phân tích.</span></li>
-                    <li class="flex items-start"><i class="fas fa-check text-philo-gold mt-1 mr-3"></i> <span><strong>Mục tiêu:</strong> Chinh phục thiên nhiên, tìm chân lý khách quan.</span></li>
-                    <li class="flex items-start"><i class="fas fa-check text-philo-gold mt-1 mr-3"></i> <span><strong>Đại diện:</strong> Plato, Descartes, Kant.</span></li>
-                </ul>
-            </div>
-
-            <!-- East -->
-            <div class="bg-[#faf9f6] p-8 border-t-4 border-philo-gold shadow-lg group hover:-translate-y-2 transition duration-300">
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="w-12 h-12 bg-philo-parchment rounded-full flex items-center justify-center text-philo-ink text-2xl">
-                        <i class="fas fa-yin-yang"></i>
-                    </div>
-                    <h3 class="font-heading font-bold text-2xl text-philo-ink">Phương Đông</h3>
-                </div>
-                <ul class="space-y-4 font-body text-gray-700">
-                    <li class="flex items-start"><i class="fas fa-check text-philo-gold mt-1 mr-3"></i> <span><strong>Trọng tâm:</strong> Cộng đồng, Trực giác, Hòa hợp.</span></li>
-                    <li class="flex items-start"><i class="fas fa-check text-philo-gold mt-1 mr-3"></i> <span><strong>Mục tiêu:</strong> Thích nghi với tự nhiên, tu thân dưỡng tính.</span></li>
-                    <li class="flex items-start"><i class="fas fa-check text-philo-gold mt-1 mr-3"></i> <span><strong>Đại diện:</strong> Khổng Tử, Lão Tử, Đức Phật.</span></li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. Branches (Phân nhánh) -->
-    <section id="branches" class="py-20 bg-[#1a1a1a] text-philo-paper relative overflow-hidden">
-        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10"></div>
-        
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-heading font-bold text-philo-gold mb-4">Các Phân Nhánh Chính</h2>
-                <div class="w-16 h-1 bg-philo-gold mx-auto opacity-50"></div>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- Branch Card Template -->
-                <div class="bg-gray-800/50 border border-gray-700 p-8 hover:border-philo-gold transition duration-300 group rounded-sm" data-aos="fade-up">
-                    <i class="fas fa-globe text-3xl text-philo-gold mb-4 opacity-80 group-hover:opacity-100 transition"></i>
-                    <h3 class="font-heading font-bold text-xl mb-1 text-white">Siêu hình học</h3>
-                    <p class="font-display italic text-gray-500 text-sm mb-3">Metaphysics</p>
-                    <p class="font-body text-sm text-gray-300 leading-relaxed">Nghiên cứu về bản chất của thực tại. Cái gì thực sự tồn tại? Thế giới từ đâu mà có?</p>
-                </div>
-
-                <div class="bg-gray-800/50 border border-gray-700 p-8 hover:border-philo-gold transition duration-300 group rounded-sm" data-aos="fade-up" data-aos-delay="100">
-                    <i class="fas fa-brain text-3xl text-philo-gold mb-4 opacity-80 group-hover:opacity-100 transition"></i>
-                    <h3 class="font-heading font-bold text-xl mb-1 text-white">Nhận thức luận</h3>
-                    <p class="font-display italic text-gray-500 text-sm mb-3">Epistemology</p>
-                    <p class="font-body text-sm text-gray-300 leading-relaxed">Nghiên cứu về tri thức. Làm sao ta biết được sự thật? Giới hạn của sự hiểu biết là gì?</p>
-                </div>
-
-                <div class="bg-gray-800/50 border border-gray-700 p-8 hover:border-philo-gold transition duration-300 group rounded-sm" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fas fa-balance-scale text-3xl text-philo-gold mb-4 opacity-80 group-hover:opacity-100 transition"></i>
-                    <h3 class="font-heading font-bold text-xl mb-1 text-white">Đạo đức học</h3>
-                    <p class="font-display italic text-gray-500 text-sm mb-3">Ethics</p>
-                    <p class="font-body text-sm text-gray-300 leading-relaxed">Nghiên cứu về giá trị đạo đức. Thế nào là đúng/sai? Sống thế nào cho hạnh phúc?</p>
-                </div>
-
-                <div class="bg-gray-800/50 border border-gray-700 p-8 hover:border-philo-gold transition duration-300 group rounded-sm" data-aos="fade-up" data-aos-delay="300">
-                    <i class="fas fa-project-diagram text-3xl text-philo-gold mb-4 opacity-80 group-hover:opacity-100 transition"></i>
-                    <h3 class="font-heading font-bold text-xl mb-1 text-white">Logic học</h3>
-                    <p class="font-display italic text-gray-500 text-sm mb-3">Logic</p>
-                    <p class="font-body text-sm text-gray-300 leading-relaxed">Nghiên cứu quy luật của tư duy. Các quy tắc suy luận đúng đắn và ngụy biện.</p>
-                </div>
-
-                <div class="bg-gray-800/50 border border-gray-700 p-8 hover:border-philo-gold transition duration-300 group rounded-sm" data-aos="fade-up" data-aos-delay="400">
-                    <i class="fas fa-paint-brush text-3xl text-philo-gold mb-4 opacity-80 group-hover:opacity-100 transition"></i>
-                    <h3 class="font-heading font-bold text-xl mb-1 text-white">Mỹ học</h3>
-                    <p class="font-display italic text-gray-500 text-sm mb-3">Aesthetics</p>
-                    <p class="font-body text-sm text-gray-300 leading-relaxed">Nghiên cứu về cái đẹp và nghệ thuật. Tại sao chúng ta rung động trước cái đẹp?</p>
-                </div>
-
-                <div class="bg-gray-800/50 border border-gray-700 p-8 hover:border-philo-gold transition duration-300 group rounded-sm" data-aos="fade-up" data-aos-delay="500">
-                    <i class="fas fa-users text-3xl text-philo-gold mb-4 opacity-80 group-hover:opacity-100 transition"></i>
-                    <h3 class="font-heading font-bold text-xl mb-1 text-white">Chính trị</h3>
-                    <p class="font-display italic text-gray-500 text-sm mb-3">Political Philosophy</p>
-                    <p class="font-body text-sm text-gray-300 leading-relaxed">Xã hội công bằng là gì? Quyền lực, Tự do, Bình đẳng và vai trò của Nhà nước.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 5. Thought Experiments (Thí nghiệm) -->
-    <section id="experiments" class="py-20 max-w-6xl mx-auto px-6">
-        <div class="section-separator" data-aos="fade-in"><i class="fas fa-flask"></i></div>
-        
-        <div class="text-center mb-16" data-aos="fade-up">
-            <h2 class="text-3xl md:text-4xl font-heading font-bold text-philo-ink mb-3">Phòng Thí Nghiệm Tư Duy</h2>
-            <p class="font-body italic text-philo-brown text-lg">Thách thức trực giác</p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Exp 1 -->
-            <div class="classic-card p-6 text-center group cursor-pointer bg-white" data-aos="zoom-in">
-                <div class="w-14 h-14 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-philo-gold group-hover:text-white transition duration-300">
-                    <i class="fas fa-subway text-xl"></i>
-                </div>
-                <h4 class="font-heading font-bold text-lg mb-2">Bài toán Xe goòng</h4>
-                <p class="font-body text-xs text-gray-600">Hy sinh 1 người để cứu 5 người? (Chủ nghĩa Tiện lợi vs Bổn phận).</p>
-            </div>
-
-            <!-- Exp 2 -->
-            <div class="classic-card p-6 text-center group cursor-pointer bg-white" data-aos="zoom-in" data-aos-delay="100">
-                <div class="w-14 h-14 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-philo-gold group-hover:text-white transition duration-300">
-                    <i class="fas fa-dungeon text-xl"></i>
-                </div>
-                <h4 class="font-heading font-bold text-lg mb-2">Hang động Plato</h4>
-                <p class="font-body text-xs text-gray-600">Thế giới ta thấy là thực tại hay chỉ là những cái bóng?</p>
-            </div>
-
-            <!-- Exp 3 -->
-            <div class="classic-card p-6 text-center group cursor-pointer bg-white" data-aos="zoom-in" data-aos-delay="200">
-                <div class="w-14 h-14 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-philo-gold group-hover:text-white transition duration-300">
-                    <i class="fas fa-microchip text-xl"></i>
-                </div>
-                <h4 class="font-heading font-bold text-lg mb-2">Bộ não trong chậu</h4>
-                <p class="font-body text-xs text-gray-600">Làm sao bạn biết mình không phải là một bộ não đang được kích thích điện?</p>
-            </div>
-
-            <!-- Exp 4 -->
-            <div class="classic-card p-6 text-center group cursor-pointer bg-white" data-aos="zoom-in" data-aos-delay="300">
-                <div class="w-14 h-14 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-philo-gold group-hover:text-white transition duration-300">
-                    <i class="fas fa-ship text-xl"></i>
-                </div>
-                <h4 class="font-heading font-bold text-lg mb-2">Con tàu Theseus</h4>
-                <p class="font-body text-xs text-gray-600">Nếu thay thế mọi bộ phận, nó còn là con tàu cũ không?</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-[#1a1a1a] border-t border-gray-800 text-center py-16">
+    <!-- 2. Timeline (Lịch sử - Nội dung gốc đã khôi phục) -->
+    <section id="history" class="py-24 relative bg-[#080808]">
         <div class="max-w-4xl mx-auto px-6">
-            <i class="fas fa-book-reader text-4xl text-philo-gold mb-6 opacity-80"></i>
-            <h2 class="font-heading font-bold text-2xl text-white mb-6 tracking-widest uppercase">Thư Viện Gợi Ý</h2>
-            <div class="flex flex-wrap justify-center gap-4 font-body text-sm text-gray-400 mb-10">
-                <a href="#" class="border border-gray-700 px-4 py-2 hover:border-philo-gold hover:text-white transition">Thế giới của Sophie</a>
-                <a href="#" class="border border-gray-700 px-4 py-2 hover:border-philo-gold hover:text-white transition">Câu chuyện Triết học</a>
-                <a href="#" class="border border-gray-700 px-4 py-2 hover:border-philo-gold hover:text-white transition">Philosophize This!</a>
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-display font-bold text-white">Dòng Chảy Lịch Sử</h2>
+                <p class="text-xs text-gold uppercase tracking-widest mt-2">Hành trình tư duy nhân loại</p>
             </div>
-            <p class="font-display text-philo-gold text-xl italic mb-4">
-                "Sapere Aude"
-            </p>
-            <p class="text-gray-500 text-sm italic">Hãy dám sử dụng sự hiểu biết của chính mình. (Immanuel Kant)</p>
             
-            <div class="mt-12 w-10 h-10 mx-auto border border-gray-700 rounded-full flex items-center justify-center text-gray-600 hover:text-white hover:border-white transition cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-                <i class="fas fa-arrow-up"></i>
+            <div class="relative pl-8 md:pl-0">
+                <div class="timeline-line md:block hidden"></div>
+                <!-- Line for mobile -->
+                <div class="absolute left-0 top-0 bottom-0 w-px bg-gold/30 md:hidden"></div>
+
+                <div class="space-y-12">
+                    <!-- Ancient -->
+                    <div class="md:flex justify-between items-center group" data-aos="fade-up">
+                        <div class="md:w-[45%] md:text-right mb-2 md:mb-0">
+                            <h3 class="text-xl font-display font-bold text-white">Cổ Đại</h3>
+                            <p class="text-xs text-gray-500 uppercase tracking-wider">Đi tìm bản nguyên</p>
+                        </div>
+                        <div class="w-3 h-3 bg-gold rounded-full absolute left-[-5px] md:left-1/2 md:ml-[-6px] border border-black z-10"></div>
+                        <div class="md:w-[45%]">
+                            <p class="text-sm text-gray-400">Socrates, Plato, Aristotle, Lão Tử...</p>
+                        </div>
+                    </div>
+
+                    <!-- Medieval -->
+                    <div class="md:flex justify-between items-center group" data-aos="fade-up">
+                        <div class="md:w-[45%] md:text-right mb-2 md:mb-0 order-1 md:order-3">
+                            <p class="text-sm text-gray-400">Thomas Aquinas, Augustine...</p>
+                        </div>
+                        <div class="w-3 h-3 bg-gray-600 rounded-full absolute left-[-5px] md:left-1/2 md:ml-[-6px] border border-black z-10 order-2"></div>
+                        <div class="md:w-[45%] order-3 md:order-1">
+                            <h3 class="text-xl font-display font-bold text-white">Trung Cổ</h3>
+                            <p class="text-xs text-gray-500 uppercase tracking-wider">Đức tin & Thần học</p>
+                        </div>
+                    </div>
+
+                    <!-- Modern -->
+                    <div class="md:flex justify-between items-center group" data-aos="fade-up">
+                        <div class="md:w-[45%] md:text-right mb-2 md:mb-0">
+                            <h3 class="text-xl font-display font-bold text-white">Phục Hưng & Cận Đại</h3>
+                            <p class="text-xs text-gray-500 uppercase tracking-wider">Lý tính & Khoa học</p>
+                        </div>
+                        <div class="w-3 h-3 bg-white rounded-full absolute left-[-5px] md:left-1/2 md:ml-[-6px] border border-black z-10"></div>
+                        <div class="md:w-[45%]">
+                            <p class="text-sm text-gray-400">Descartes, Kant, Hegel, Marx...</p>
+                        </div>
+                    </div>
+
+                    <!-- Contemporary -->
+                    <div class="md:flex justify-between items-center group" data-aos="fade-up">
+                        <div class="md:w-[45%] md:text-right mb-2 md:mb-0 order-1 md:order-3">
+                            <p class="text-sm text-gray-400">Sartre, Nietzsche, Heidegger...</p>
+                        </div>
+                        <div class="w-3 h-3 bg-gold rounded-full absolute left-[-5px] md:left-1/2 md:ml-[-6px] border border-black z-10 order-2 animate-pulse"></div>
+                        <div class="md:w-[45%] order-3 md:order-1">
+                            <h3 class="text-xl font-display font-bold text-white">Đương Đại</h3>
+                            <p class="text-xs text-gray-500 uppercase tracking-wider">Hiện sinh & Ngôn ngữ</p>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <!-- 3. Spotlight Sections (CTA giữ lại) -->
+    <div class="grid md:grid-cols-2">
+        <!-- Stoicism CTA -->
+        <section id="stoic" class="relative py-24 px-8 bg-[#0f0f0f] border-r border-white/5 flex flex-col justify-center items-center text-center group">
+             <div class="absolute inset-0 bg-[url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Marcus_Aurelius_Louvre_Ma1166.jpg/800px-Marcus_Aurelius_Louvre_Ma1166.jpg')] opacity-20 bg-cover bg-center grayscale group-hover:opacity-30 transition duration-700"></div>
+             <div class="relative z-10">
+                 <i class="fas fa-stone text-4xl text-gold mb-4"></i>
+                 <h3 class="text-3xl font-display font-bold text-white mb-2">Chủ Nghĩa Khắc Kỷ</h3>
+                 <p class="text-sm text-gray-400 mb-6 max-w-sm mx-auto">Nghệ thuật giữ tâm bình thản giữa thế giới biến động.</p>
+                 <a href="stoic.html" class="px-6 py-2 border border-gold text-gold text-xs font-bold uppercase hover:bg-gold hover:text-black transition">Xem chi tiết</a>
+             </div>
+        </section>
+
+        <!-- East West CTA -->
+        <section id="east-west" class="relative py-24 px-8 bg-[#0f0f0f] flex flex-col justify-center items-center text-center group">
+            <div class="absolute inset-0 bg-[url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/RyoanJi-Dry_garden.jpg/1280px-RyoanJi-Dry_garden.jpg')] opacity-20 bg-cover bg-center grayscale group-hover:opacity-30 transition duration-700"></div>
+            <div class="relative z-10">
+                <i class="fas fa-yin-yang text-4xl text-white mb-4"></i>
+                <h3 class="text-3xl font-display font-bold text-white mb-2">Đông Tây Hội Ngộ</h3>
+                <p class="text-sm text-gray-400 mb-6 max-w-sm mx-auto">So sánh tư duy trực giác phương Đông và lý tính phương Tây.</p>
+                <a href="east-west.html" class="px-6 py-2 border border-white text-white text-xs font-bold uppercase hover:bg-white hover:text-black transition">So sánh ngay</a>
+            </div>
+       </section>
+    </div>
+
+    <!-- 4. Branches (Phân nhánh - Khôi phục đủ 6 nhánh) -->
+    <section id="branches" class="py-24 bg-dark-bg border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-display font-bold text-white">Các Phân Nhánh Chính</h2>
+                <div class="w-16 h-px bg-gold mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="glass-card p-6" data-aos="fade-up">
+                    <i class="fas fa-globe text-gold mb-4 text-xl"></i>
+                    <h3 class="font-bold text-white mb-2">Siêu Hình Học</h3>
+                    <p class="text-xs text-gray-500">Bản chất thực tại. Thế giới từ đâu mà có?</p>
+                </div>
+                <div class="glass-card p-6" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-brain text-gold mb-4 text-xl"></i>
+                    <h3 class="font-bold text-white mb-2">Nhận Thức Luận</h3>
+                    <p class="text-xs text-gray-500">Làm sao ta biết được sự thật?</p>
+                </div>
+                <div class="glass-card p-6" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-balance-scale text-gold mb-4 text-xl"></i>
+                    <h3 class="font-bold text-white mb-2">Đạo Đức Học</h3>
+                    <p class="text-xs text-gray-500">Thế nào là đúng/sai? Hạnh phúc là gì?</p>
+                </div>
+                <!-- Restored Logic, Aesthetics, Political -->
+                <div class="glass-card p-6" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-project-diagram text-gray-400 mb-4 text-xl"></i>
+                    <h3 class="font-bold text-white mb-2">Logic Học</h3>
+                    <p class="text-xs text-gray-500">Quy luật tư duy đúng đắn.</p>
+                </div>
+                <div class="glass-card p-6" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-paint-brush text-gray-400 mb-4 text-xl"></i>
+                    <h3 class="font-bold text-white mb-2">Mỹ Học</h3>
+                    <p class="text-xs text-gray-500">Bản chất của cái đẹp và nghệ thuật.</p>
+                </div>
+                <div class="glass-card p-6" data-aos="fade-up" data-aos-delay="500">
+                    <i class="fas fa-gavel text-gray-400 mb-4 text-xl"></i>
+                    <h3 class="font-bold text-white mb-2">Chính Trị</h3>
+                    <p class="text-xs text-gray-500">Công lý, Quyền lực và Tự do.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Toolkit & Modern (Khôi phục nội dung quan trọng) -->
+    <section id="tools" class="py-24 bg-[#0a0a0a]">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16">
+            <!-- Thought Experiments -->
+            <div data-aos="fade-right">
+                <h3 class="text-2xl font-display font-bold text-white mb-8 border-l-4 border-gold pl-4">Phòng Thí Nghiệm Tư Duy</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="glass-card p-5 text-center">
+                        <i class="fas fa-subway text-2xl text-gray-500 mb-3"></i>
+                        <h4 class="font-bold text-white text-sm">Xe goòng</h4>
+                    </div>
+                    <div class="glass-card p-5 text-center">
+                        <i class="fas fa-dungeon text-2xl text-gray-500 mb-3"></i>
+                        <h4 class="font-bold text-white text-sm">Hang động Plato</h4>
+                    </div>
+                    <div class="glass-card p-5 text-center">
+                        <i class="fas fa-microchip text-2xl text-gray-500 mb-3"></i>
+                        <h4 class="font-bold text-white text-sm">Bộ não trong chậu</h4>
+                    </div>
+                    <div class="glass-card p-5 text-center">
+                        <i class="fas fa-ship text-2xl text-gray-500 mb-3"></i>
+                        <h4 class="font-bold text-white text-sm">Tàu Theseus</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Toolkit & Modern -->
+            <div data-aos="fade-left">
+                <div class="mb-12">
+                    <h3 class="text-2xl font-display font-bold text-white mb-6 border-l-4 border-white pl-4">Bộ Công Cụ (Toolkit)</h3>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li class="flex items-start"><i class="fas fa-check text-gold mt-1 mr-3"></i> <span><strong>Diễn dịch (Deduction):</strong> Từ cái chung suy ra cái riêng.</span></li>
+                        <li class="flex items-start"><i class="fas fa-check text-gold mt-1 mr-3"></i> <span><strong>Quy nạp (Induction):</strong> Từ cái riêng suy ra cái chung.</span></li>
+                        <li class="flex items-start"><i class="fas fa-check text-gold mt-1 mr-3"></i> <span><strong>Dao cạo Occam:</strong> Giải thích đơn giản nhất thường đúng nhất.</span></li>
+                        <li class="flex items-start"><i class="fas fa-exclamation-triangle text-red-500 mt-1 mr-3"></i> <span><strong>Ngụy biện:</strong> Các lỗi lập luận cần tránh.</span></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-display font-bold text-white mb-6 border-l-4 border-gray-500 pl-4">Triết Học Thế Kỷ 21</h3>
+                    <div class="flex gap-3 flex-wrap">
+                        <span class="px-3 py-1 border border-white/10 text-xs text-gray-300">AI Ethics</span>
+                        <span class="px-3 py-1 border border-white/10 text-xs text-gray-300">Đạo đức Môi trường</span>
+                        <span class="px-3 py-1 border border-white/10 text-xs text-gray-300">Hậu hiện đại</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Library -->
+    <footer class="bg-black py-16 border-t border-white/10 text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="font-display text-xl font-bold text-gold mb-6 tracking-widest uppercase">Thư Viện Gợi Ý</h2>
+            <div class="flex flex-wrap justify-center gap-4 text-xs text-gray-500 mb-10">
+                <span class="border border-white/10 px-3 py-1">Thế giới của Sophie</span>
+                <span class="border border-white/10 px-3 py-1">Câu chuyện Triết học</span>
+                <span class="border border-white/10 px-3 py-1">School of Life</span>
+            </div>
+            
+            <p class="font-display italic text-white text-lg mb-1">"Sapere Aude"</p>
+            <p class="text-gray-600 text-xs">Hãy dám sử dụng sự hiểu biết của chính mình.</p>
+            <div class="mt-8 text-[10px] text-gray-800 uppercase tracking-widest">&copy; 2024 Philosophy Portal.</div>
         </div>
     </footer>
 
-    <!-- Init AOS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            offset: 80,
-            duration: 1000,
-            once: true,
-            easing: 'ease-out-quad'
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('shadow-md', 'bg-philo-paper/98');
-                navbar.classList.remove('py-4');
-                navbar.classList.add('py-2');
-            } else {
-                navbar.classList.remove('shadow-md', 'bg-philo-paper/98');
-                navbar.classList.add('py-4');
-                navbar.classList.remove('py-2');
-            }
-        });
-    </script>
+    <script> AOS.init({ offset: 50, duration: 1000, once: true }); </script>
 </body>
 </html>
