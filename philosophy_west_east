@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bản Đồ Tư Duy Nhân Loại: Đông & Tây</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Spectral (Tiêu đề cổ điển) & Merriweather (Nội dung dễ đọc) - Hỗ trợ Tiếng Việt 100% -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Spectral:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        paper: '#fdfbf7',      /* Màu giấy cũ */
+                        ink: '#2b2626',        /* Màu mực đen nâu */
+                        west: '#2c3e50',       /* Xanh thẫm (Phương Tây) */
+                        east: '#8b4513',       /* Nâu đất nung (Phương Đông) */
+                        accent: '#c5a059',     /* Vàng kim */
+                        sepia_light: '#e8e4d9'
+                    },
+                    fontFamily: {
+                        /* Thay đổi quan trọng nhất ở đây */
+                        display: ['"Spectral"', 'serif'],     /* Dùng cho tiêu đề lớn */
+                        body: ['"Merriweather"', 'serif'],    /* Dùng cho nội dung */
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #fdfbf7;
+            color: #2b2626;
+            /* Hiệu ứng vân giấy cũ */
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+            overflow-x: hidden;
+            font-family: 'Merriweather', serif; /* Mặc định cho toàn trang */
+        }
+
+        .text-shadow { text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
+        
+        /* Viền cổ điển */
+        .border-classic {
+            border: 1px solid #c5a059;
+            position: relative;
+        }
+        .border-classic::after {
+            content: '';
+            position: absolute;
+            top: -4px; left: -4px; right: -4px; bottom: -4px;
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            pointer-events: none;
+        }
+
+        /* Divider dọc */
+        .vertical-divider {
+            position: relative;
+        }
+        .vertical-divider::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: #c5a059;
+            transform: translateX(-50%);
+            opacity: 0.5;
+        }
+        
+        @media (max-width: 768px) {
+            .vertical-divider::before { display: none; }
+        }
+
+        /* Tùy chỉnh font Spectral cho các tiêu đề để trông giống sách cổ */
+        h1, h2, h3, h4, .font-display {
+            font-family: 'Spectral', serif;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- BLOCK 1: HEADER (Bìa Sách) -->
+    <header class="min-h-screen flex flex-col items-center justify-center text-center px-4 relative py-20">
+        <!-- Decoration Corner -->
+        <div class="absolute top-0 left-0 p-8 opacity-20"><img src="https://img.icons8.com/ios/100/2b2626/greek-column.png" alt="column" width="80"></div>
+        <div class="absolute top-0 right-0 p-8 opacity-20 transform scale-x-[-1]"><img src="https://img.icons8.com/ios/100/2b2626/greek-column.png" alt="column" width="80"></div>
+
+        <div class="max-w-4xl z-10" data-aos="zoom-in" data-aos-duration="1500">
+            <p class="text-accent tracking-[0.3em] uppercase text-sm font-bold mb-4 font-display">Triết Học Nhập Môn</p>
+            <h1 class="text-6xl md:text-8xl font-display font-extrabold text-ink mb-6 leading-tight border-b-4 border-accent inline-block pb-6">
+                ĐÔNG & TÂY
+            </h1>
+            <h2 class="text-2xl md:text-4xl font-display text-west italic mb-8 font-light">
+                Cuộc đối thoại giữa <span class="text-west font-bold">Logic</span> và <span class="text-east font-bold">Trực giác</span>
+            </h2>
+            
+            <!-- Definition Box -->
+            <div class="bg-white/60 backdrop-blur-sm p-8 border-classic max-w-2xl mx-auto rounded-sm mt-8 shadow-sm">
+                <div class="flex items-center justify-center gap-3 text-2xl font-bold mb-3 font-display">
+                    <span class="text-west">Philos (Yêu)</span>
+                    <span class="text-accent">+</span>
+                    <span class="text-east">Sophia (Sự thông thái)</span>
+                </div>
+                <p class="text-gray-700 italic text-base leading-relaxed">
+                    "Cùng đi tìm chân lý và ý nghĩa cuộc sống, nhưng bằng hai con đường khác nhau."
+                </p>
+            </div>
+
+            <div class="mt-16 animate-bounce text-accent text-3xl cursor-pointer opacity-80 hover:opacity-100">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- BLOCK 2: CORE MINDSET (Split Screen) -->
+    <section class="max-w-7xl mx-auto px-4 py-20">
+        <div class="text-center mb-16">
+            <h3 class="text-4xl font-display font-bold text-ink">Tư Duy Cốt Lõi</h3>
+            <div class="w-32 h-1 bg-accent mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12 md:gap-24 vertical-divider">
+            
+            <!-- WEST -->
+            <div class="text-right pr-0 md:pr-8 group" data-aos="fade-right">
+                <div class="flex flex-col items-end">
+                    <div class="w-24 h-24 bg-west text-white rounded-full flex items-center justify-center text-4xl mb-6 shadow-xl group-hover:scale-110 transition duration-500 border-4 border-white">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h4 class="text-3xl font-bold font-display text-west mb-2">PHƯƠNG TÂY</h4>
+                    <p class="text-xs uppercase tracking-widest text-gray-500 mb-8 font-bold">Brain • Geometry • Analysis</p>
+                    
+                    <ul class="space-y-8 text-base">
+                        <li class="flex flex-col items-end">
+                            <strong class="text-west block mb-1 text-lg font-display">Cách Tiếp Cận</strong>
+                            <span class="text-gray-700 leading-relaxed">Chú trọng <strong>LOGIC & Phân tích</strong>. Mổ xẻ vấn đề thành từng mảnh nhỏ để hiểu.</span>
+                        </li>
+                        <li class="flex flex-col items-end">
+                            <strong class="text-west block mb-1 text-lg font-display">Câu Hỏi Chính</strong>
+                            <span class="text-gray-700 leading-relaxed">"Tại sao?" (Why) & "Cái gì?" (What). Đi tìm chân lý khách quan.</span>
+                        </li>
+                        <li class="flex flex-col items-end">
+                            <strong class="text-west block mb-1 text-lg font-display">Với Tự Nhiên</strong>
+                            <span class="text-gray-700 leading-relaxed">Chinh phục và Kiểm soát tự nhiên.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- EAST -->
+            <div class="text-left pl-0 md:pl-8 group" data-aos="fade-left">
+                <div class="flex flex-col items-start">
+                    <div class="w-24 h-24 bg-east text-white rounded-full flex items-center justify-center text-4xl mb-6 shadow-xl group-hover:scale-110 transition duration-500 border-4 border-white">
+                        <i class="fas fa-yin-yang"></i>
+                    </div>
+                    <h4 class="text-3xl font-bold font-display text-east mb-2">PHƯƠNG ĐÔNG</h4>
+                    <p class="text-xs uppercase tracking-widest text-gray-500 mb-8 font-bold">Heart • Water • Harmony</p>
+                    
+                    <ul class="space-y-8 text-base">
+                        <li class="flex flex-col items-start">
+                            <strong class="text-east block mb-1 text-lg font-display">Cách Tiếp Cận</strong>
+                            <span class="text-gray-700 leading-relaxed">Chú trọng <strong>TRỰC GIÁC & Tổng thể</strong>. Nhìn vấn đề trong mối liên kết hài hòa.</span>
+                        </li>
+                        <li class="flex flex-col items-start">
+                            <strong class="text-east block mb-1 text-lg font-display">Câu Hỏi Chính</strong>
+                            <span class="text-gray-700 leading-relaxed">"Như thế nào?" (How). Đi tìm cách sống và sự cân bằng.</span>
+                        </li>
+                        <li class="flex flex-col items-start">
+                            <strong class="text-east block mb-1 text-lg font-display">Với Tự Nhiên</strong>
+                            <span class="text-gray-700 leading-relaxed">Hòa hợp và Nương theo tự nhiên (Thiên nhân hợp nhất).</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- BLOCK 3: THE SELF (Contrast Cards) -->
+    <section class="bg-sepia_light py-24 border-t border-b border-accent/30">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h3 class="text-4xl font-display font-bold text-ink">Vị Trí Của Con Người</h3>
+                <p class="italic text-gray-600 mt-3 text-lg">Cái "Tôi" và Cái "Ta"</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10">
+                <!-- West: Individualism -->
+                <div class="bg-white p-10 border-classic shadow-xl hover:shadow-2xl transition duration-500 transform hover:-translate-y-2" data-aos="zoom-in-right">
+                    <div class="text-center">
+                        <div class="mb-6"><i class="fas fa-user text-5xl text-west opacity-80"></i></div>
+                        <h4 class="text-2xl font-bold text-west mb-4 font-display tracking-wide">CHỦ NGHĨA CÁ NHÂN</h4>
+                        <div class="h-px w-24 bg-west mx-auto mb-8 opacity-30"></div>
+                        <p class="text-xl font-display italic text-gray-800 mb-4 leading-relaxed">
+                            "Tôi tư duy, nên tôi tồn tại."
+                        </p>
+                        <p class="text-xs text-gray-500 uppercase tracking-widest mb-8 font-bold">— Descartes</p>
+                        <p class="text-base text-gray-700 leading-relaxed">
+                            Trọng tâm là cái "Tôi" độc lập, tự do cá nhân, quyền lợi riêng biệt. Như một ngôi sao tỏa sáng đơn lẻ giữa bầu trời.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- East: Collectivism -->
+                <div class="bg-white p-10 border-classic shadow-xl hover:shadow-2xl transition duration-500 transform hover:-translate-y-2" data-aos="zoom-in-left">
+                    <div class="text-center">
+                         <div class="mb-6"><i class="fas fa-users text-5xl text-east opacity-80"></i></div>
+                        <h4 class="text-2xl font-bold text-east mb-4 font-display tracking-wide">CHỦ NGHĨA TẬP THỂ</h4>
+                        <div class="h-px w-24 bg-east mx-auto mb-8 opacity-30"></div>
+                        <p class="text-xl font-display italic text-gray-800 mb-4 leading-relaxed">
+                            "Giọt nước chỉ không cạn khi hòa vào biển cả."
+                        </p>
+                        <p class="text-xs text-gray-500 uppercase tracking-widest mb-8 font-bold">— Ngạn ngữ</p>
+                        <p class="text-base text-gray-700 leading-relaxed">
+                            Trọng tâm là cái "Ta" trong mối quan hệ với gia đình và vũ trụ. Như giọt nước rơi vào hồ, tạo sóng lan tỏa.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOCK 4: TIMELINE -->
+    <section class="max-w-5xl mx-auto px-4 py-24">
+        <div class="text-center mb-20" data-aos="fade-up">
+            <h3 class="text-4xl font-display font-bold text-ink">Dòng Chảy Thời Gian</h3>
+        </div>
+
+        <div class="relative">
+            <!-- Central Line -->
+            <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-accent opacity-40"></div>
+
+            <!-- Ancient Era -->
+            <div class="flex flex-col md:flex-row items-center justify-between mb-20 relative z-10" data-aos="fade-up">
+                <div class="md:w-5/12 text-right pr-10">
+                    <h4 class="font-bold text-west font-display text-2xl">Socrates, Plato, Aristotle</h4>
+                    <p class="text-sm text-gray-500 mt-2 font-light italic">Nền móng khoa học & chính trị</p>
+                </div>
+                <div class="w-14 h-14 rounded-full bg-paper border-2 border-accent flex items-center justify-center text-accent font-bold font-display text-xl shadow-md z-20">
+                    I
+                </div>
+                <div class="md:w-5/12 text-left pl-10">
+                    <h4 class="font-bold text-east font-display text-2xl">Phật, Lão Tử, Khổng Tử</h4>
+                    <p class="text-sm text-gray-500 mt-2 font-light italic">Nền móng đạo đức & tâm linh</p>
+                </div>
+                <div class="absolute top-1/2 left-0 right-0 text-center -translate-y-12 md:-translate-y-0 opacity-10 md:opacity-100 pointer-events-none">
+                    <span class="bg-paper px-3 py-1 text-xs text-gray-400 uppercase tracking-[0.2em] font-bold border border-gray-200">Cổ Đại</span>
+                </div>
+            </div>
+
+            <!-- Middle Era -->
+            <div class="flex flex-col md:flex-row items-center justify-between mb-20 relative z-10" data-aos="fade-up">
+                <div class="md:w-5/12 text-right pr-10">
+                    <h4 class="font-bold text-west font-display text-2xl">Thiên Chúa Giáo</h4>
+                    <p class="text-sm text-gray-500 mt-2 font-light italic">Đức tin thống trị</p>
+                </div>
+                <div class="w-14 h-14 rounded-full bg-paper border-2 border-accent flex items-center justify-center text-accent font-bold font-display text-xl shadow-md z-20">
+                    II
+                </div>
+                <div class="md:w-5/12 text-left pl-10">
+                    <h4 class="font-bold text-east font-display text-2xl">Tam Giáo Đồng Nguyên</h4>
+                    <p class="text-sm text-gray-500 mt-2 font-light italic">Sự giao thoa Nho - Phật - Lão</p>
+                </div>
+                 <div class="absolute top-1/2 left-0 right-0 text-center -translate-y-12 md:-translate-y-0 opacity-10 md:opacity-100 pointer-events-none">
+                    <span class="bg-paper px-3 py-1 text-xs text-gray-400 uppercase tracking-[0.2em] font-bold border border-gray-200">Trung Đại</span>
+                </div>
+            </div>
+
+            <!-- Modern Era -->
+            <div class="flex flex-col md:flex-row items-center justify-between relative z-10" data-aos="fade-up">
+                <div class="md:w-5/12 text-right pr-10">
+                    <h4 class="font-bold text-west font-display text-2xl">Nietzsche, Kant, Sartre</h4>
+                    <p class="text-sm text-gray-500 mt-2 font-light italic">Hiện sinh & Khoa học</p>
+                </div>
+                <div class="w-14 h-14 rounded-full bg-paper border-2 border-accent flex items-center justify-center text-accent font-bold font-display text-xl shadow-md z-20">
+                    III
+                </div>
+                <div class="md:w-5/12 text-left pl-10">
+                    <h4 class="font-bold text-east font-display text-2xl">Thiền (Zen), Chánh Niệm</h4>
+                    <p class="text-sm text-gray-500 mt-2 font-light italic">Thích Nhất Hạnh & Ứng dụng</p>
+                </div>
+                 <div class="absolute top-1/2 left-0 right-0 text-center -translate-y-12 md:-translate-y-0 opacity-10 md:opacity-100 pointer-events-none">
+                    <span class="bg-paper px-3 py-1 text-xs text-gray-400 uppercase tracking-[0.2em] font-bold border border-gray-200">Hiện Đại</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOCK 5: FOOTER (Conclusion) -->
+    <footer class="bg-ink text-sepia_light py-24 text-center border-t-8 border-accent relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/wood-pattern.png')]"></div>
+        
+        <div class="max-w-3xl mx-auto px-4 relative z-10" data-aos="zoom-in">
+            <div class="flex justify-center items-center gap-8 mb-10 text-5xl opacity-90">
+                <i class="fas fa-brain text-west bg-white rounded-full p-2"></i>
+                <span class="text-accent text-3xl font-light">+</span>
+                <i class="fas fa-heart text-east bg-white rounded-full p-2"></i>
+            </div>
+            
+            <h3 class="text-3xl md:text-4xl font-display font-bold text-accent mb-8">Sự Kết Hợp Hoàn Hảo</h3>
+            <p class="font-body text-xl leading-loose mb-10 text-gray-300">
+                "Không có bên nào đúng hay sai tuyệt đối. Người hiện đại thông thái là người biết trang bị cho mình <strong class="text-white border-b border-west pb-1">Cái đầu lạnh của Phương Tây</strong> và <strong class="text-white border-b border-east pb-1">Trái tim nóng của Phương Đông</strong>."
+            </p>
+            
+            <button class="px-10 py-4 border-2 border-accent text-accent hover:bg-accent hover:text-ink transition duration-300 rounded-sm font-display tracking-[0.2em] uppercase text-sm font-bold">
+                Bắt đầu hành trình
+            </button>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            offset: 80,
+            duration: 1000,
+        });
+    </script>
+</body>
+</html>
