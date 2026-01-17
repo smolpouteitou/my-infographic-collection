@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Triết Học: Kho Tàng Tư Tưởng</title>
+    <title>Đại Cương Triết Học: Kho Tàng Tư Tưởng</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -11,7 +11,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
     
     <!-- Icons & Animation -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -22,12 +22,14 @@
             theme: {
                 extend: {
                     colors: {
-                        dark: { bg: '#050505', surface: '#121212', border: '#262626' },
-                        gold: { DEFAULT: '#C5A059', light: '#E5Cca0', dim: '#6b5628' },
+                        paper: '#F9F7F2',       /* Màu giấy kem */
+                        ink: '#1A1A1A',         /* Màu mực đen */
+                        bronze: '#8C7356',      /* Màu đồng cổ điển */
+                        gold: '#C5A059',
                     },
                     fontFamily: {
                         display: ['"Playfair Display"', 'serif'],
-                        sans: ['"Manrope"', 'sans-serif'],
+                        body: ['"Lora"', 'serif'],
                     }
                 }
             }
@@ -35,203 +37,208 @@
     </script>
     
     <style>
-        body { background-color: #050505; color: #e5e5e5; font-family: 'Manrope', sans-serif; overflow-x: hidden; }
-        ::-webkit-scrollbar { width: 8px; background: #050505; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-        html { scroll-behavior: smooth; }
+        body { 
+            background-color: #F9F7F2; 
+            color: #1A1A1A; 
+            font-family: 'Lora', serif; 
+            overflow-x: hidden; 
+            background-image: url("https://www.transparenttextures.com/patterns/cream-paper.png");
+        }
         
-        /* Glassmorphism */
-        .glass-card {
-            background: rgba(30, 30, 30, 0.4);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        html { scroll-behavior: smooth; }
+
+        /* Card Style */
+        .classic-card {
+            background: #FFFFFF;
+            border: 1px solid #E5E5E5;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
             transition: all 0.3s ease;
         }
-        .glass-card:hover { border-color: #C5A059; background: rgba(40, 40, 40, 0.9); transform: translateY(-3px); }
+        .classic-card:hover {
+            transform: translateY(-3px);
+            border-color: #8C7356;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+        }
 
-        /* Masking */
-        .hero-mask { mask-image: linear-gradient(to bottom, black 30%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 100%); }
+        /* Typography */
+        .drop-cap::first-letter {
+            float: left; font-size: 3rem; line-height: 0.8; margin-right: 0.5rem;
+            font-family: 'Playfair Display', serif; font-weight: 700; color: #8C7356;
+        }
+        
+        .divider { height: 1px; background: linear-gradient(to right, transparent, #8C7356, transparent); margin: 1.5rem auto; width: 100px; opacity: 0.6; }
+        
+        /* Timeline specific */
+        .timeline-line { position: absolute; left: 50%; transform: translateX(-50%); width: 1px; height: 100%; background: #8C7356; opacity: 0.3; }
     </style>
 </head>
-<body class="antialiased selection:bg-gold selection:text-black">
+<body class="antialiased">
 
     <!-- Navbar -->
-    <nav class="fixed w-full z-50 top-0 py-4 px-6 flex justify-between items-center backdrop-blur-xl bg-dark-bg/90 border-b border-white/10 transition-all duration-300">
-        <div class="font-display font-bold text-lg tracking-widest text-white uppercase border border-white/20 px-3 py-1">
-            Triết<span class="text-gold">Học</span>
+    <nav class="fixed w-full z-50 top-0 py-3 px-6 flex justify-between items-center bg-[#F9F7F2]/95 backdrop-blur-md border-b border-[#E5E5E5] transition-all duration-300 shadow-sm">
+        <div class="font-display font-bold text-lg tracking-[0.1em] text-ink">
+            <i class="fas fa-university mr-2 text-bronze"></i>PHILOSOPHY
         </div>
-        <div class="hidden xl:flex gap-6 text-[11px] uppercase tracking-[0.2em] font-bold text-gray-400">
-            <a href="#intro" class="hover:text-gold transition-colors">Tổng quan</a>
-            <a href="#history" class="hover:text-gold transition-colors">Lịch sử</a>
-            <a href="#spotlight" class="hover:text-gold transition-colors text-white">Tiêu điểm</a>
-            <a href="#branches" class="hover:text-gold transition-colors">Phân nhánh</a>
+        <div class="hidden xl:flex gap-6 text-xs font-bold uppercase tracking-widest text-gray-600">
+            <a href="#intro" class="hover:text-bronze transition-colors">Tổng quan</a>
+            <a href="#history" class="hover:text-bronze transition-colors">Lịch sử</a>
+            <a href="https://smolpouteitou.github.io/my-infographic-collection/stoicism.html" class="hover:text-bronze transition-colors text-ink">Khắc Kỷ</a>
+            <a href="https://smolpouteitou.github.io/my-infographic-collection/philosophy_west_east.html" class="hover:text-bronze transition-colors">Đông Tây</a>
+            <a href="#branches" class="hover:text-bronze transition-colors">Phân nhánh</a>
         </div>
-        <a href="#spotlight" class="bg-white text-black px-4 py-2 text-[10px] font-bold uppercase tracking-widest hover:bg-gold transition-colors">Bắt đầu</a>
+        <a href="#spotlight" class="border border-ink text-ink px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest hover:bg-ink hover:text-white transition-colors">Bắt đầu</a>
     </nav>
 
     <!-- Hero Section -->
-    <header id="intro" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
-        <!-- Background Image -->
-        <div class="absolute inset-0 z-0">
+    <header id="intro" class="relative min-h-[85vh] flex flex-col justify-center items-center text-center px-4 overflow-hidden pt-16">
+        <!-- Background: School of Athens (Light Version) -->
+        <div class="absolute inset-0 z-[-1] opacity-20">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Raphael_School_of_Athens.jpg/1920px-Raphael_School_of_Athens.jpg" 
-                 class="w-full h-full object-cover opacity-25 grayscale hero-mask" 
-                 alt="The School of Athens"> 
-            <div class="absolute inset-0 bg-gradient-to-t from-dark-bg via-dark-bg/40 to-transparent"></div>
+                 class="w-full h-full object-cover object-center grayscale" 
+                 alt="The School of Athens">
         </div>
+        <div class="absolute inset-0 bg-white/40 z-[-1]"></div>
 
-        <div class="relative z-10 text-center px-4 max-w-5xl mx-auto mt-10" data-aos="zoom-out" data-aos-duration="1500">
-            <div class="inline-block border-b border-gold mb-6 pb-1">
-                <span class="text-gold text-xs tracking-[0.4em] uppercase font-bold">Kho tàng tư tưởng nhân loại</span>
-            </div>
-            <h1 class="text-5xl md:text-8xl font-display font-bold text-white mb-6 leading-tight tracking-tight shadow-2xl">
-                ĐẠI CƯƠNG <span class="text-transparent bg-clip-text bg-gradient-to-br from-white to-gray-500">TRIẾT HỌC</span>
+        <div class="relative z-10 max-w-4xl mx-auto" data-aos="fade-up" data-aos-duration="1000">
+            <p class="text-bronze text-xs font-bold tracking-[0.3em] uppercase mb-4">Kho tàng tư tưởng nhân loại</p>
+            <h1 class="text-5xl md:text-8xl font-display font-bold text-ink mb-6 leading-none">
+                ĐẠI CƯƠNG <br> <span class="italic text-gray-600">TRIẾT HỌC</span>
             </h1>
-            <p class="font-display text-xl md:text-2xl text-gray-300 italic font-light mb-4 max-w-2xl mx-auto">
+            <div class="w-24 h-px bg-bronze mx-auto mb-8"></div>
+            <p class="font-body text-xl md:text-2xl text-gray-700 italic mb-10 leading-relaxed max-w-2xl mx-auto">
                 "Cuộc đời không được suy tưởng là cuộc đời không đáng sống."
             </p>
-            <p class="text-xs text-gold uppercase tracking-widest mb-12">— Socrates —</p>
+            <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-12">— Socrates —</p>
             
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="#spotlight" class="group relative px-8 py-3 border border-white/20 hover:border-gold transition-all duration-300 min-w-[200px]">
-                    <div class="absolute inset-0 bg-gold/5 w-0 group-hover:w-full transition-all duration-300"></div>
-                    <span class="relative flex items-center justify-center gap-2 text-white font-bold uppercase tracking-widest text-xs">
-                        Bắt đầu hành trình
-                    </span>
+                <!-- CTA 1 -->
+                <a href="https://smolpouteitou.github.io/my-infographic-collection/stoicism.html" class="bg-ink text-white px-8 py-3 text-xs font-bold uppercase tracking-widest hover:bg-bronze transition shadow-lg min-w-[200px]">
+                    Khắc Kỷ
+                </a>
+                <!-- CTA 2 -->
+                <a href="https://smolpouteitou.github.io/my-infographic-collection/philosophy_west_east.html" class="bg-white text-ink border border-ink px-8 py-3 text-xs font-bold uppercase tracking-widest hover:bg-gray-100 transition shadow-lg min-w-[200px]">
+                    Đông Tây
                 </a>
             </div>
         </div>
     </header>
 
-    <!-- 1. The Essence (ĐÃ SỬA MÀU NỀN 2 Ô VUÔNG) -->
-    <section class="py-24 bg-dark-bg border-b border-white/5">
+    <!-- 1. The Essence -->
+    <section class="py-16 bg-white border-y border-[#E5E5E5]">
         <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
             <div data-aos="fade-right">
-                <h2 class="text-4xl font-display font-bold text-white mb-6">Bản Chất & Định Nghĩa</h2>
-                <div class="glass-card p-8 rounded-xl relative overflow-hidden group border-l-4 border-gold">
-                    <h3 class="text-gold font-bold uppercase text-xs tracking-widest mb-3">Philo-sophia</h3>
-                    <p class="text-gray-300 text-base leading-relaxed">
-                        Xuất phát từ tiếng Hy Lạp, nghĩa là <strong class="text-white">"Tình yêu đối với sự thông thái"</strong>. Nghiên cứu những vấn đề chung nhất của thế giới và vị trí con người trong đó.
+                <div class="mb-6">
+                    <span class="text-bronze text-xs font-bold tracking-widest uppercase">Chương I</span>
+                    <h2 class="text-4xl font-display font-bold text-ink mt-2">Bản Chất & Định Nghĩa</h2>
+                </div>
+                <div class="classic-card p-8 rounded-sm">
+                    <h3 class="text-bronze font-bold uppercase text-xs tracking-widest mb-3">Philo-sophia</h3>
+                    <p class="text-gray-700 leading-relaxed text-lg font-body">
+                        Xuất phát từ tiếng Hy Lạp, nghĩa là <strong class="text-ink">"Tình yêu đối với sự thông thái"</strong>. Nghiên cứu những vấn đề chung nhất của thế giới và vị trí con người trong đó.
                     </p>
                 </div>
             </div>
             
-            <div class="glass-card p-10 rounded-xl bg-[#121212]" data-aos="fade-left">
-                <h3 class="text-2xl font-display font-bold text-white mb-6 flex items-center gap-3">
-                    <i class="fas fa-balance-scale text-gold"></i> Vấn đề cơ bản
+            <div class="classic-card p-10 bg-[#F9F7F2]" data-aos="fade-left">
+                <h3 class="text-2xl font-display font-bold text-ink mb-6 flex items-center gap-3">
+                    <i class="fas fa-balance-scale text-bronze"></i> Vấn đề cơ bản
                 </h3>
-                <p class="text-sm text-gray-400 mb-8 italic">"Mối quan hệ giữa Vật chất và Ý thức"</p>
-                
+                <p class="text-sm text-gray-500 mb-8 italic font-serif">"Mối quan hệ giữa Vật chất và Ý thức"</p>
                 <div class="grid grid-cols-2 gap-6">
-                    <!-- Ô Duy Vật: Màu Xanh Đậm (Không đen) -->
-                    <div class="p-6 rounded-lg bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-600 text-center hover:-translate-y-1 transition duration-300 shadow-lg">
-                        <i class="fas fa-cube text-3xl text-blue-200 mb-3"></i>
-                        <h4 class="text-white font-bold text-sm">Duy Vật</h4>
-                        <p class="text-[10px] text-blue-200/70 mt-2 uppercase tracking-wide">Vật chất quyết định</p>
+                    <div class="p-6 bg-white border border-[#E5E5E5] text-center rounded shadow-sm hover:shadow-md transition">
+                        <i class="fas fa-cube text-3xl text-gray-400 mb-3"></i>
+                        <h4 class="text-ink font-bold text-sm uppercase tracking-wide">Duy Vật</h4>
+                        <p class="text-[10px] text-gray-500 mt-2">Vật chất quyết định</p>
                     </div>
-
-                    <!-- Ô Duy Tâm: Màu Nâu Vàng (Không đen) -->
-                    <div class="p-6 rounded-lg bg-gradient-to-br from-amber-900 to-yellow-900 border border-amber-700 text-center hover:-translate-y-1 transition duration-300 shadow-lg">
-                        <i class="fas fa-lightbulb text-3xl text-amber-200 mb-3"></i>
-                        <h4 class="text-white font-bold text-sm">Duy Tâm</h4>
-                        <p class="text-[10px] text-amber-200/70 mt-2 uppercase tracking-wide">Ý thức quyết định</p>
+                    <div class="p-6 bg-white border border-[#E5E5E5] text-center rounded shadow-sm hover:shadow-md transition">
+                        <i class="fas fa-lightbulb text-3xl text-gold mb-3"></i>
+                        <h4 class="text-ink font-bold text-sm uppercase tracking-wide">Duy Tâm</h4>
+                        <p class="text-[10px] text-gray-500 mt-2">Ý thức quyết định</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 2. Timeline (ĐÃ CÓ ẢNH LẤP ĐẦY KHOẢNG TRỐNG) -->
-    <section id="history" class="py-24 relative overflow-hidden bg-[#050505]">
+    <!-- 2. Timeline (Light Style) -->
+    <section id="history" class="py-20 relative overflow-hidden bg-[#F9F7F2]">
         <div class="max-w-6xl mx-auto px-6 relative z-10">
-            <div class="text-center mb-20" data-aos="fade-up">
-                <h2 class="text-4xl font-display font-bold text-white mb-2">Dòng Chảy Lịch Sử</h2>
-                <div class="w-16 h-1 bg-gold mx-auto"></div>
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-display font-bold text-ink mb-2">Dòng Chảy Lịch Sử</h2>
+                <div class="divider"></div>
             </div>
             
             <div class="relative">
-                <!-- Trục giữa -->
-                <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-gold to-transparent transform -translate-x-1/2 opacity-60 hidden md:block"></div>
+                <div class="timeline-line hidden md:block"></div>
 
-                <div class="space-y-20">
-                    <!-- Cổ Đại: Chữ Trái - Ảnh Phải -->
+                <div class="space-y-16">
+                    <!-- Ancient -->
                     <div class="flex flex-col md:flex-row items-center justify-between gap-12 group" data-aos="fade-up">
-                        <div class="md:w-1/2 text-right">
-                            <div class="glass-card p-8 border-r-4 border-gold bg-[#121212]">
-                                <h3 class="text-2xl font-display font-bold text-white mb-1">Cổ Đại</h3>
-                                <p class="text-xs text-gold uppercase tracking-wider mb-4">Khởi nguồn</p>
-                                <p class="text-sm text-gray-400 mb-4">Đi tìm bản nguyên của vũ trụ và bản chất đạo đức con người.</p>
+                        <div class="md:w-1/2 text-right order-2 md:order-1">
+                            <div class="classic-card p-8 border-r-4 border-bronze bg-white">
+                                <h3 class="text-2xl font-display font-bold text-ink mb-1">Cổ Đại</h3>
+                                <p class="text-xs text-bronze uppercase tracking-wider mb-4 font-bold">Khởi nguồn</p>
+                                <p class="text-sm text-gray-600 mb-4">Đi tìm bản nguyên của vũ trụ và bản chất đạo đức con người.</p>
                                 <div class="flex justify-end gap-2 text-[10px] uppercase font-bold text-gray-500">
-                                    <span class="px-2 py-1 border border-white/10 rounded">Socrates</span>
-                                    <span class="px-2 py-1 border border-white/10 rounded">Plato</span>
+                                    <span class="px-2 py-1 border border-gray-200 rounded">Socrates</span>
+                                    <span class="px-2 py-1 border border-gray-200 rounded">Plato</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="md:w-1/2 h-64 md:h-48 relative rounded-xl overflow-hidden border border-white/10">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/The_Parthenon_in_Athens.jpg/640px-The_Parthenon_in_Athens.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="Ancient">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-4">
-                                <span class="text-white text-xs font-bold uppercase tracking-widest">Parthenon</span>
-                            </div>
+                        <div class="md:w-1/2 h-48 relative rounded overflow-hidden shadow-md order-1 md:order-2">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/The_Parthenon_in_Athens.jpg/640px-The_Parthenon_in_Athens.jpg" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-700" alt="Ancient">
                         </div>
                     </div>
 
-                    <!-- Trung Cổ: Ảnh Trái - Chữ Phải -->
+                    <!-- Medieval -->
                     <div class="flex flex-col md:flex-row items-center justify-between gap-12 group" data-aos="fade-up">
-                        <div class="md:w-1/2 h-64 md:h-48 relative rounded-xl overflow-hidden border border-white/10 order-2 md:order-1">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Notre-Dame_de_Paris_2013-07-24.jpg/640px-Notre-Dame_de_Paris_2013-07-24.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="Medieval">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-4">
-                                <span class="text-white text-xs font-bold uppercase tracking-widest">Notre Dame</span>
-                            </div>
+                        <div class="md:w-1/2 h-48 relative rounded overflow-hidden shadow-md order-2 md:order-1">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Notre-Dame_de_Paris_2013-07-24.jpg/640px-Notre-Dame_de_Paris_2013-07-24.jpg" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-700" alt="Medieval">
                         </div>
                         <div class="md:w-1/2 order-1 md:order-2">
-                            <div class="glass-card p-8 border-l-4 border-gray-600 bg-[#121212]">
-                                <h3 class="text-2xl font-display font-bold text-white mb-1">Trung Cổ</h3>
-                                <p class="text-xs text-gray-500 uppercase tracking-wider mb-4">Đức Tin & Lý Trí</p>
-                                <p class="text-sm text-gray-400 mb-4">Triết học là "nô tỳ" của thần học. Nỗ lực dung hòa đức tin tôn giáo và lý trí.</p>
+                            <div class="classic-card p-8 border-l-4 border-gray-600 bg-white">
+                                <h3 class="text-2xl font-display font-bold text-ink mb-1">Trung Cổ</h3>
+                                <p class="text-xs text-gray-500 uppercase tracking-wider mb-4 font-bold">Đức Tin & Lý Trí</p>
+                                <p class="text-sm text-gray-600 mb-4">Triết học là "nô tỳ" của thần học. Nỗ lực dung hòa đức tin tôn giáo và lý trí.</p>
                                 <div class="flex gap-2 text-[10px] uppercase font-bold text-gray-500">
-                                    <span class="px-2 py-1 border border-white/10 rounded">Augustine</span>
-                                    <span class="px-2 py-1 border border-white/10 rounded">Aquinas</span>
+                                    <span class="px-2 py-1 border border-gray-200 rounded">Augustine</span>
+                                    <span class="px-2 py-1 border border-gray-200 rounded">Aquinas</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Cận Đại: Chữ Trái - Ảnh Phải -->
+                    <!-- Modern -->
                     <div class="flex flex-col md:flex-row items-center justify-between gap-12 group" data-aos="fade-up">
-                        <div class="md:w-1/2 text-right">
-                            <div class="glass-card p-8 border-r-4 border-white bg-[#121212]">
-                                <h3 class="text-2xl font-display font-bold text-white mb-1">Cận Đại</h3>
-                                <p class="text-xs text-white uppercase tracking-wider mb-4">Ánh Sáng Lý Tính</p>
-                                <p class="text-sm text-gray-400 mb-4">Đề cao khoa học, quyền con người và tư duy duy lý. "Tôi tư duy, nên tôi tồn tại."</p>
+                        <div class="md:w-1/2 text-right order-2 md:order-1">
+                            <div class="classic-card p-8 border-r-4 border-ink bg-white">
+                                <h3 class="text-2xl font-display font-bold text-ink mb-1">Cận Đại</h3>
+                                <p class="text-xs text-gray-800 uppercase tracking-wider mb-4 font-bold">Ánh Sáng Lý Tính</p>
+                                <p class="text-sm text-gray-600 mb-4">Đề cao khoa học, quyền con người và tư duy duy lý. "Tôi tư duy, nên tôi tồn tại."</p>
                                 <div class="flex justify-end gap-2 text-[10px] uppercase font-bold text-gray-500">
-                                    <span class="px-2 py-1 border border-white/10 rounded">Descartes</span>
-                                    <span class="px-2 py-1 border border-white/10 rounded">Kant</span>
+                                    <span class="px-2 py-1 border border-gray-200 rounded">Descartes</span>
+                                    <span class="px-2 py-1 border border-gray-200 rounded">Kant</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="md:w-1/2 h-64 md:h-48 relative rounded-xl overflow-hidden border border-white/10">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/GodfreyKneller-IsaacNewton-1689.jpg/640px-GodfreyKneller-IsaacNewton-1689.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="Modern">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-4">
-                                <span class="text-white text-xs font-bold uppercase tracking-widest">Kỷ Nguyên Ánh Sáng</span>
-                            </div>
+                        <div class="md:w-1/2 h-48 relative rounded overflow-hidden shadow-md order-1 md:order-2">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/GodfreyKneller-IsaacNewton-1689.jpg/640px-GodfreyKneller-IsaacNewton-1689.jpg" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-700" alt="Modern">
                         </div>
                     </div>
 
-                    <!-- Đương Đại: Ảnh Trái - Chữ Phải -->
+                    <!-- Contemporary -->
                     <div class="flex flex-col md:flex-row items-center justify-between gap-12 group" data-aos="fade-up">
-                        <div class="md:w-1/2 h-64 md:h-48 relative rounded-xl overflow-hidden border border-white/10 order-2 md:order-1">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/The_Thinker_Musee_Rodin.jpg/640px-The_Thinker_Musee_Rodin.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="Contemporary">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-4">
-                                <span class="text-white text-xs font-bold uppercase tracking-widest">Người Suy Tư</span>
-                            </div>
+                        <div class="md:w-1/2 h-48 relative rounded overflow-hidden shadow-md order-2 md:order-1">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/The_Thinker_Musee_Rodin.jpg/640px-The_Thinker_Musee_Rodin.jpg" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-700" alt="Contemporary">
                         </div>
                         <div class="md:w-1/2 order-1 md:order-2">
-                            <div class="glass-card p-8 border-l-4 border-gold bg-[#121212]">
-                                <h3 class="text-2xl font-display font-bold text-white mb-1">Đương Đại</h3>
-                                <p class="text-xs text-gold uppercase tracking-wider mb-4">Hiện Sinh & Cấu Trúc</p>
-                                <p class="text-sm text-gray-400 mb-4">Tập trung vào sự tồn tại, tự do cá nhân, ngôn ngữ và sự sụp đổ của các đại tự sự.</p>
+                            <div class="classic-card p-8 border-l-4 border-bronze bg-white">
+                                <h3 class="text-2xl font-display font-bold text-ink mb-1">Đương Đại</h3>
+                                <p class="text-xs text-bronze uppercase tracking-wider mb-4 font-bold">Hiện Sinh & Cấu Trúc</p>
+                                <p class="text-sm text-gray-600 mb-4">Tập trung vào sự tồn tại, tự do cá nhân, ngôn ngữ và sự sụp đổ của các đại tự sự.</p>
                                 <div class="flex gap-2 text-[10px] uppercase font-bold text-gray-500">
-                                    <span class="px-2 py-1 border border-white/10 rounded">Nietzsche</span>
-                                    <span class="px-2 py-1 border border-white/10 rounded">Sartre</span>
+                                    <span class="px-2 py-1 border border-gray-200 rounded">Nietzsche</span>
+                                    <span class="px-2 py-1 border border-gray-200 rounded">Sartre</span>
                                 </div>
                             </div>
                         </div>
@@ -241,83 +248,121 @@
         </div>
     </section>
 
-    <!-- 3. Spotlight (Twin Portals - SÁNG RÕ HƠN) -->
-    <section id="spotlight" class="py-24 bg-[#050505] relative overflow-hidden">
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gold/5 blur-[120px] pointer-events-none"></div>
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-8 relative z-10">
+    <!-- 3. Spotlight Sections (Light Portals) -->
+    <section id="spotlight" class="py-20 bg-white border-y border-[#E5E5E5]">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-8">
             <!-- Card 1 -->
-            <div class="group relative h-[500px] overflow-hidden rounded-xl border border-white/10 hover:border-gold transition-all duration-500 shadow-2xl" data-aos="fade-right">
-                <div class="absolute inset-0 bg-[url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Marcus_Aurelius_Louvre_Ma1166.jpg/800px-Marcus_Aurelius_Louvre_Ma1166.jpg')] bg-cover bg-center grayscale brightness-[0.5] group-hover:scale-110 group-hover:grayscale-0 group-hover:brightness-90 transition-all duration-700 ease-out"></div>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-90 group-hover:opacity-60 transition-opacity"></div>
-                <div class="absolute bottom-0 left-0 p-10 w-full z-10">
-                    <h3 class="text-3xl font-display font-bold text-white mb-2">Chủ Nghĩa Khắc Kỷ</h3>
-                    <p class="text-sm text-gray-300 mb-6 leading-relaxed">Nghệ thuật giữ tâm bình thản (Ataraxia) giữa thế giới biến động.</p>
-                    <a href="https://smolpouteitou.github.io/my-infographic-collection/stoicism.html" class="inline-flex items-center gap-3 text-gold text-xs font-bold uppercase tracking-[0.2em] border-b border-gold pb-1 transition-all">Xem Infographic <i class="fas fa-arrow-right transform group-hover:translate-x-2 transition-transform"></i></a>
+            <div class="group relative h-[450px] overflow-hidden rounded-sm border border-gray-200 shadow-lg cursor-default" data-aos="fade-right">
+                <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1559630985-1823528b4952?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center grayscale opacity-80 group-hover:scale-105 transition duration-700"></div>
+                <div class="absolute inset-0 bg-white/80 group-hover:bg-white/60 transition-colors"></div>
+                
+                <div class="absolute bottom-0 left-0 p-10 w-full z-10 flex flex-col items-center text-center">
+                    <h3 class="text-3xl font-display font-bold text-ink mb-2">Chủ Nghĩa Khắc Kỷ</h3>
+                    <div class="w-12 h-1 bg-bronze mb-4"></div>
+                    <p class="text-sm text-gray-600 mb-6 leading-relaxed max-w-sm">
+                        Nghệ thuật giữ tâm bình thản (Ataraxia) giữa thế giới biến động.
+                    </p>
+                    <a href="https://smolpouteitou.github.io/my-infographic-collection/stoicism.html" class="bg-ink text-white px-6 py-2 text-xs font-bold uppercase tracking-widest hover:bg-bronze transition shadow-md">
+                        Xem Infographic
+                    </a>
                 </div>
             </div>
+
             <!-- Card 2 -->
-            <div class="group relative h-[500px] overflow-hidden rounded-xl border border-white/10 hover:border-white transition-all duration-500 shadow-2xl" data-aos="fade-left">
-                <div class="absolute inset-0 bg-[url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/RyoanJi-Dry_garden.jpg/1280px-RyoanJi-Dry_garden.jpg')] bg-cover bg-center grayscale brightness-[0.5] group-hover:scale-110 group-hover:grayscale-0 group-hover:brightness-90 transition-all duration-700 ease-out"></div>
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-90 group-hover:opacity-60 transition-opacity"></div>
-                <div class="absolute bottom-0 left-0 p-10 w-full z-10">
-                    <h3 class="text-3xl font-display font-bold text-white mb-2">Đông Tây Hội Ngộ</h3>
-                    <p class="text-sm text-gray-300 mb-6 leading-relaxed">So sánh tư duy trực giác phương Đông và lý tính phương Tây.</p>
-                    <a href="https://smolpouteitou.github.io/my-infographic-collection/philosophy_west_east.html" class="inline-flex items-center gap-3 text-white text-xs font-bold uppercase tracking-[0.2em] border-b border-white pb-1 transition-all">So Sánh Ngay <i class="fas fa-arrow-right transform group-hover:translate-x-2 transition-transform"></i></a>
+            <div class="group relative h-[450px] overflow-hidden rounded-sm border border-gray-200 shadow-lg cursor-default" data-aos="fade-left">
+                <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1528360983277-13d9b152c6d1?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center grayscale opacity-80 group-hover:scale-105 transition duration-700"></div>
+                <div class="absolute inset-0 bg-white/80 group-hover:bg-white/60 transition-colors"></div>
+
+                <div class="absolute bottom-0 left-0 p-10 w-full z-10 flex flex-col items-center text-center">
+                    <h3 class="text-3xl font-display font-bold text-ink mb-2">Đông Tây Hội Ngộ</h3>
+                    <div class="w-12 h-1 bg-gray-400 mb-4"></div>
+                    <p class="text-sm text-gray-600 mb-6 leading-relaxed max-w-sm">
+                        So sánh tư duy trực giác phương Đông và lý tính phương Tây.
+                    </p>
+                    <a href="https://smolpouteitou.github.io/my-infographic-collection/philosophy_west_east.html" class="bg-white text-ink border border-ink px-6 py-2 text-xs font-bold uppercase tracking-widest hover:bg-gray-100 transition shadow-md">
+                        So Sánh Ngay
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 4. Branches -->
-    <section id="branches" class="py-24 bg-[#0a0a0a] relative">
-        <div class="max-w-7xl mx-auto px-6">
+    <section id="branches" class="py-20 bg-[#F9F7F2]">
+        <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl font-display font-bold text-white mb-2">Các Phân Nhánh</h2>
-                <div class="w-16 h-px bg-gold mx-auto"></div>
+                <h2 class="text-3xl font-display font-bold text-ink mb-2">Các Phân Nhánh</h2>
+                <div class="divider"></div>
             </div>
+            
             <div class="grid md:grid-cols-3 gap-6">
-                <div class="group p-8 rounded-xl border border-white/10 bg-[#121212] hover:bg-[#1a1a1a] transition-all duration-300 hover:-translate-y-2 relative" data-aos="fade-up"><i class="fas fa-globe text-3xl text-gold mb-4 block"></i><h3 class="text-lg font-bold text-white mb-2">Siêu Hình Học</h3><p class="text-xs text-gray-400 leading-relaxed">Bản chất của thực tại là gì? Thế giới từ đâu mà có?</p></div>
-                <div class="group p-8 rounded-xl border border-white/10 bg-[#121212] hover:bg-[#1a1a1a] transition-all duration-300 hover:-translate-y-2 relative" data-aos="fade-up" data-aos-delay="100"><i class="fas fa-brain text-3xl text-blue-400 mb-4 block"></i><h3 class="text-lg font-bold text-white mb-2">Nhận Thức Luận</h3><p class="text-xs text-gray-400 leading-relaxed">Làm sao ta biết điều ta biết là đúng sự thật?</p></div>
-                <div class="group p-8 rounded-xl border border-white/10 bg-[#121212] hover:bg-[#1a1a1a] transition-all duration-300 hover:-translate-y-2 relative" data-aos="fade-up" data-aos-delay="200"><i class="fas fa-balance-scale text-3xl text-green-400 mb-4 block"></i><h3 class="text-lg font-bold text-white mb-2">Đạo Đức Học</h3><p class="text-xs text-gray-400 leading-relaxed">Thế nào là đúng/sai? Thế nào là sống hạnh phúc?</p></div>
-                <div class="group p-8 rounded-xl border border-white/10 bg-[#121212] hover:bg-[#1a1a1a] transition-all duration-300 hover:-translate-y-2 relative" data-aos="fade-up" data-aos-delay="300"><i class="fas fa-project-diagram text-3xl text-purple-400 mb-4 block"></i><h3 class="text-lg font-bold text-white mb-2">Logic Học</h3><p class="text-xs text-gray-400 leading-relaxed">Quy luật tư duy đúng đắn và các lỗi ngụy biện.</p></div>
-                <div class="group p-8 rounded-xl border border-white/10 bg-[#121212] hover:bg-[#1a1a1a] transition-all duration-300 hover:-translate-y-2 relative" data-aos="fade-up" data-aos-delay="400"><i class="fas fa-paint-brush text-3xl text-pink-400 mb-4 block"></i><h3 class="text-lg font-bold text-white mb-2">Mỹ Học</h3><p class="text-xs text-gray-400 leading-relaxed">Bản chất của cái đẹp và nghệ thuật.</p></div>
-                <div class="group p-8 rounded-xl border border-white/10 bg-[#121212] hover:bg-[#1a1a1a] transition-all duration-300 hover:-translate-y-2 relative" data-aos="fade-up" data-aos-delay="500"><i class="fas fa-gavel text-3xl text-red-400 mb-4 block"></i><h3 class="text-lg font-bold text-white mb-2">Chính Trị</h3><p class="text-xs text-gray-400 leading-relaxed">Công lý, Quyền lực, Tự do và Xã hội.</p></div>
+                <!-- Items -->
+                <div class="bg-white p-8 rounded shadow-sm hover:shadow-md transition group" data-aos="fade-up">
+                    <i class="fas fa-globe text-3xl text-bronze mb-4 opacity-50 group-hover:opacity-100 transition"></i>
+                    <h3 class="text-lg font-bold text-ink mb-2">Siêu Hình Học</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">Bản chất của thực tại là gì? Thế giới từ đâu mà có?</p>
+                </div>
+                <div class="bg-white p-8 rounded shadow-sm hover:shadow-md transition group" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-brain text-3xl text-blue-800 mb-4 opacity-50 group-hover:opacity-100 transition"></i>
+                    <h3 class="text-lg font-bold text-ink mb-2">Nhận Thức Luận</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">Làm sao ta biết điều ta biết là đúng sự thật?</p>
+                </div>
+                <div class="bg-white p-8 rounded shadow-sm hover:shadow-md transition group" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-balance-scale text-3xl text-green-800 mb-4 opacity-50 group-hover:opacity-100 transition"></i>
+                    <h3 class="text-lg font-bold text-ink mb-2">Đạo Đức Học</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">Thế nào là đúng/sai? Thế nào là sống hạnh phúc?</p>
+                </div>
+                <div class="bg-white p-8 rounded shadow-sm hover:shadow-md transition group" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-project-diagram text-3xl text-purple-800 mb-4 opacity-50 group-hover:opacity-100 transition"></i>
+                    <h3 class="text-lg font-bold text-ink mb-2">Logic Học</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">Quy luật tư duy đúng đắn và các lỗi ngụy biện.</p>
+                </div>
+                <div class="bg-white p-8 rounded shadow-sm hover:shadow-md transition group" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-paint-brush text-3xl text-pink-700 mb-4 opacity-50 group-hover:opacity-100 transition"></i>
+                    <h3 class="text-lg font-bold text-ink mb-2">Mỹ Học</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">Bản chất của cái đẹp và nghệ thuật.</p>
+                </div>
+                <div class="bg-white p-8 rounded shadow-sm hover:shadow-md transition group" data-aos="fade-up" data-aos-delay="500">
+                    <i class="fas fa-gavel text-3xl text-red-800 mb-4 opacity-50 group-hover:opacity-100 transition"></i>
+                    <h3 class="text-lg font-bold text-ink mb-2">Chính Trị</h3>
+                    <p class="text-xs text-gray-600 leading-relaxed">Công lý, Quyền lực, Tự do và Xã hội.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- 5. Toolkit -->
-    <section id="tools" class="py-24 bg-[#0a0a0a] border-t border-white/5">
+    <section id="tools" class="py-16 bg-white border-t border-[#E5E5E5]">
         <div class="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-16">
             <div data-aos="fade-right">
-                <h3 class="text-2xl font-display font-bold text-white mb-8 border-l-4 border-gold pl-4">Phòng Thí Nghiệm Tư Duy</h3>
+                <h3 class="text-2xl font-display font-bold text-ink mb-8 border-l-4 border-bronze pl-4">Phòng Thí Nghiệm Tư Duy</h3>
                 <div class="grid grid-cols-2 gap-4">
-                    <div class="p-5 text-center rounded-lg bg-[#121212] border border-white/10 hover:border-gold transition group cursor-default">
-                        <i class="fas fa-subway text-2xl text-gray-500 mb-3 group-hover:text-gold transition"></i>
-                        <h4 class="font-bold text-white text-xs uppercase">Xe goòng</h4>
+                    <div class="p-5 text-center bg-[#F9F7F2] border border-gray-200 rounded hover:border-bronze transition">
+                        <i class="fas fa-subway text-2xl text-gray-400 mb-3"></i>
+                        <h4 class="font-bold text-ink text-xs uppercase">Xe goòng</h4>
                     </div>
-                    <div class="p-5 text-center rounded-lg bg-[#121212] border border-white/10 hover:border-gold transition group cursor-default">
-                        <i class="fas fa-dungeon text-2xl text-gray-500 mb-3 group-hover:text-gold transition"></i>
-                        <h4 class="font-bold text-white text-xs uppercase">Hang động Plato</h4>
+                    <div class="p-5 text-center bg-[#F9F7F2] border border-gray-200 rounded hover:border-bronze transition">
+                        <i class="fas fa-dungeon text-2xl text-gray-400 mb-3"></i>
+                        <h4 class="font-bold text-ink text-xs uppercase">Hang động Plato</h4>
                     </div>
-                    <div class="p-5 text-center rounded-lg bg-[#121212] border border-white/10 hover:border-gold transition group cursor-default">
-                        <i class="fas fa-microchip text-2xl text-gray-500 mb-3 group-hover:text-gold transition"></i>
-                        <h4 class="font-bold text-white text-xs uppercase">Bộ não trong chậu</h4>
+                    <div class="p-5 text-center bg-[#F9F7F2] border border-gray-200 rounded hover:border-bronze transition">
+                        <i class="fas fa-microchip text-2xl text-gray-400 mb-3"></i>
+                        <h4 class="font-bold text-ink text-xs uppercase">Bộ não trong chậu</h4>
                     </div>
-                    <div class="p-5 text-center rounded-lg bg-[#121212] border border-white/10 hover:border-gold transition group cursor-default">
-                        <i class="fas fa-ship text-2xl text-gray-500 mb-3 group-hover:text-gold transition"></i>
-                        <h4 class="font-bold text-white text-xs uppercase">Tàu Theseus</h4>
+                    <div class="p-5 text-center bg-[#F9F7F2] border border-gray-200 rounded hover:border-bronze transition">
+                        <i class="fas fa-ship text-2xl text-gray-400 mb-3"></i>
+                        <h4 class="font-bold text-ink text-xs uppercase">Tàu Theseus</h4>
                     </div>
                 </div>
             </div>
             <div data-aos="fade-left">
                 <div class="mb-12">
-                    <h3 class="text-2xl font-display font-bold text-white mb-6 border-l-4 border-white pl-4">Bộ Công Cụ Tư Duy</h3>
-                    <ul class="space-y-4 text-sm text-gray-400">
-                        <li class="flex items-center p-3 bg-[#121212] rounded border border-white/5"><i class="fas fa-check text-gold mr-3"></i> Diễn dịch (Deduction)</li>
-                        <li class="flex items-center p-3 bg-[#121212] rounded border border-white/5"><i class="fas fa-check text-gold mr-3"></i> Quy nạp (Induction)</li>
-                        <li class="flex items-center p-3 bg-[#121212] rounded border border-white/5"><i class="fas fa-check text-gold mr-3"></i> Dao cạo Occam</li>
-                        <li class="flex items-center p-3 bg-[#121212] rounded border border-white/5"><i class="fas fa-exclamation-triangle text-red-500 mr-3"></i> Các lỗi ngụy biện</li>
+                    <h3 class="text-2xl font-display font-bold text-ink mb-6 border-l-4 border-gray-300 pl-4">Bộ Công Cụ Tư Duy</h3>
+                    <ul class="space-y-4 text-sm text-gray-600">
+                        <li class="flex items-center p-3 bg-[#F9F7F2] rounded border border-gray-100"><i class="fas fa-check text-bronze mr-3"></i> Diễn dịch (Deduction)</li>
+                        <li class="flex items-center p-3 bg-[#F9F7F2] rounded border border-gray-100"><i class="fas fa-check text-bronze mr-3"></i> Quy nạp (Induction)</li>
+                        <li class="flex items-center p-3 bg-[#F9F7F2] rounded border border-gray-100"><i class="fas fa-check text-bronze mr-3"></i> Dao cạo Occam</li>
+                        <li class="flex items-center p-3 bg-[#F9F7F2] rounded border border-gray-100"><i class="fas fa-exclamation-triangle text-red-500 mr-3"></i> Các lỗi ngụy biện</li>
                     </ul>
                 </div>
             </div>
@@ -325,18 +370,20 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black py-16 border-t border-white/10 text-center">
-        <h2 class="font-display text-xl font-bold text-gold mb-6 tracking-widest uppercase">Thư Viện Gợi Ý</h2>
-        <div class="flex flex-wrap justify-center gap-4 text-xs text-gray-500 mb-10">
-            <span class="border border-white/10 px-3 py-1">Thế giới của Sophie</span>
-            <span class="border border-white/10 px-3 py-1">Câu chuyện Triết học</span>
-            <span class="border border-white/10 px-3 py-1">School of Life</span>
+    <footer class="bg-[#1A1A1A] py-16 text-center text-white">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="font-display text-xl font-bold text-bronze mb-6 tracking-widest uppercase">Thư Viện Gợi Ý</h2>
+            <div class="flex flex-wrap justify-center gap-4 text-xs text-gray-400 mb-10">
+                <span class="border border-gray-700 px-3 py-1">Thế giới của Sophie</span>
+                <span class="border border-gray-700 px-3 py-1">Câu chuyện Triết học</span>
+                <span class="border border-gray-700 px-3 py-1">School of Life</span>
+            </div>
+            <p class="font-display italic text-white text-lg mb-1">"Sapere Aude"</p>
+            <div class="mt-8 text-[10px] text-gray-600 uppercase tracking-widest">&copy; 2024 Philosophy Portal.</div>
         </div>
-        <p class="font-display italic text-white text-lg mb-1">"Sapere Aude"</p>
-        <div class="mt-8 text-[10px] text-gray-800 uppercase tracking-widest">&copy; 2024 Philosophy Portal.</div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script> AOS.init({ offset: 50, duration: 1000, once: true }); </script>
+    <script> AOS.init({ offset: 30, duration: 800, once: true }); </script>
 </body>
 </html>
